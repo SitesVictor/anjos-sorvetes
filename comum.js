@@ -70,7 +70,7 @@ const ZAP_SVG = `<svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3
 function montarLayout(pagina) {
   const topo = document.createElement("header"); topo.className = "topo";
   topo.innerHTML = `<div class="wrap">
-    <a class="logo" href="index.html" aria-label="Anjos Sorvetes, início"><img src="img/logo-h.webp" alt="Anjos Sorvetes" width="139" height="48"></a>
+    <a class="logo" href="index.html" aria-label="Anjos, início"><img src="img/logo-h.webp" alt="Anjos" width="139" height="48"></a>
     <nav class="menu">
       <a href="index.html" class="so-pc ${pagina==="inicio"?"on":""}">Início</a>
       <a href="pedidos.html" class="${pagina==="pedidos"?"on":""}">Pedidos</a>
@@ -80,7 +80,7 @@ function montarLayout(pagina) {
 
   const rod = document.createElement("footer");
   rod.innerHTML = `<div class="wrap"><div class="cols">
-    <div><a class="logo-rod" href="index.html"><img src="img/logo-h.webp" alt="Anjos Sorvetes" width="174" height="60"></a>
+    <div><a class="logo-rod" href="index.html"><img src="img/logo-h.webp" alt="Anjos" width="174" height="60"></a>
       <p style="margin-top:.8rem">Sorvetes, picolés e paletas produzidos em Anchieta (ES).</p></div>
     <div><h4>Navegue</h4><ul><li><a href="index.html">Início</a></li><li><a href="pedidos.html">Fazer pedido</a></li><li><a href="revenda.html">Seja revendedor</a></li><li><a href="index.html#visite">Horários e endereço</a></li></ul></div>
     <div><h4>Contato</h4><ul><li><a href="${zap("Olá, Anjos! 🍦 Vim pelo site.")}" target="_blank" rel="noopener">WhatsApp (28) 99968-2200</a></li><li><a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener">Instagram @anjossorvetes</a></li><li>Rua Projetada, s/n — Baixo Pongal, Anchieta (ES)</li></ul></div>
