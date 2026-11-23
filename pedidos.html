@@ -234,7 +234,7 @@
   const NOV_FOTOS = { "cobertura|Brigadeiro":"brigadeiro", "cobertura|Delírio":"delirio", "leite|Pistache":"pistache", "paletas|Avelã":"paleta-avela" };
   function desenharNovidades() {
     $("#novs").innerHTML = ITENS.filter(i => i.novo).map(i => { const n = qtd[i.id] || 0;
-      return `<div class="nov ${n?"sel":""}"><img src="img/sm/${NOV_FOTOS[i.id] || i.cat.foto.split("/").pop().replace(".webp","")}.webp" alt="" loading="lazy">
+      return `<div class="nov ${n?"sel":""}"><img src="img/sm-${NOV_FOTOS[i.id] || i.cat.foto.split("/").pop().replace(".webp","")}.webp" alt="" loading="lazy">
         <div><b>${i.sabor}</b><small>${i.cat.nome}</small>${botoes(i)}</div></div>`; }).join("");
   }
 

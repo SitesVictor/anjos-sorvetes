@@ -126,7 +126,7 @@ function desenharHorarios(sel) {
     .map(([a,b,hj]) => `<li class="${hj?"hoje":""}"><span>${a}${hj?" (hoje)":""}</span><span>${b}</span></li>`).join("");
 }
 function fotoCat(c, cls="") {
-  if (c.foto) return `<img class="${cls}" src="${c.foto.replace("img/","img/sm/")}" alt="${c.nome}" loading="lazy">`;
+  if (c.foto) return `<img class="${cls}" src="${c.foto.replace("img/","img/sm-")}" alt="${c.nome}" loading="lazy">`;
   return `<div class="${cls} sem-foto zero" role="img" aria-label="${c.nome}"><b>0%</b><span>açúcar</span></div>`;
 }
 function arteHero(sel, itens) {
