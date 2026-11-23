@@ -4,207 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Anjos Sorvetes — Anchieta, ES</title>
-<meta name="description" content="Sorvetes, picolés, paletas e potes feitos em Anchieta. Consulte valores e seja um revendedor Anjos.">
+<title>Anjos Sorvetes — Fábrica e Empório em Anchieta</title>
+<meta name="description" content="Sorvetes, picolés, paletas e potes feitos em Anchieta (ES). Conheça nossos sabores, faça seu pedido ou seja um revendedor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
 <style>
-  :root{
-    --azul:#5bb6cc; --azul2:#3b98b0; --azulEsc:#1f5f72; --ceu:#e8f6fa; --amarelo:#f8c21d; --amarelo2:#e5a800;
-    --marrom:#8a5a3f; --marrom2:#6a4029; --creme:#fffaf0; --texto:#24343a; --suave:#5f7a82; --branco:#fff;
-    --sombra:0 14px 34px -16px rgba(31,95,114,.45); --raio:22px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  [hidden]{display:none!important}
-  html{scroll-behavior:smooth;scroll-padding-top:74px}
-  body{font-family:Nunito,system-ui,sans-serif;color:var(--texto);background:var(--creme);line-height:1.55;-webkit-font-smoothing:antialiased}
-  h1,h2,h3,.logo{font-family:"Baloo 2",Nunito,sans-serif;line-height:1.05}
-  a{color:inherit}
-  .wrap{max-width:1160px;margin:0 auto;padding:0 1.25rem}
-  button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  .linhas{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+  .linha{display:flex;flex-direction:column;align-items:center;text-align:center;text-decoration:none;background:#fff;border-radius:var(--raio);padding:1.3rem 1rem 1.1rem;box-shadow:var(--sombra);transition:transform .2s;position:relative;overflow:hidden}
+  .linha::before{content:"";position:absolute;left:50%;top:-40px;width:170px;height:170px;transform:translateX(-50%);border-radius:50%;background:var(--bg,#e8f6fa);opacity:.7}
+  .linha:hover{transform:translateY(-4px)}
+  .linha .ilu{position:relative;height:110px;display:grid;place-items:center}
+  .linha .ilu svg{height:104px;width:auto}
+  .linha h3{position:relative;font-size:1.35rem;color:var(--azulEsc);margin-top:.6rem}
+  .linha p{position:relative;font-weight:700;color:var(--suave);font-size:.88rem;margin:.2rem 0 .7rem}
+  .linha span.v{position:relative;font-weight:900;font-size:.85rem;color:var(--azul2);margin-top:auto}
 
-  /* topo */
-  .topo{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #e3eef2}
-  .topo .wrap{display:flex;align-items:center;gap:1rem;height:64px}
-  .logo{display:flex;align-items:center;gap:.5rem;font-size:1.65rem;font-weight:800;color:var(--azul2);text-decoration:none}
-  .logo small{display:block;font-family:Nunito;font-size:.62rem;font-weight:900;letter-spacing:.22em;color:var(--marrom);margin-top:-.25rem}
-  .logo svg{width:40px;height:40px}
-  .menu{margin-left:auto;display:flex;gap:.3rem}
-  .menu a{text-decoration:none;font-weight:800;font-size:.95rem;padding:.5rem .85rem;border-radius:999px;color:var(--azulEsc)}
-  .menu a:hover{background:var(--ceu)}
-  .menu a.rev{background:var(--amarelo);color:var(--marrom2)}
-  @media (max-width:820px){.menu a:not(.rev){display:none}}
+  .lanc{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+  .lanc>div{background:linear-gradient(160deg,#fff 0%,#fff6dd 100%);border-radius:var(--raio);padding:1.3rem 1rem;text-align:center;box-shadow:var(--sombra);position:relative}
+  .lanc>div::after{content:"Novo";position:absolute;top:.8rem;right:.8rem;background:var(--amarelo);color:var(--marrom2);font-weight:900;font-size:.72rem;padding:.15rem .55rem;border-radius:999px}
+  .lanc svg{height:120px;width:auto;margin:0 auto .6rem;display:block}
+  .lanc h3{font-size:1.35rem;color:var(--marrom2)}
+  .lanc p{font-weight:700;color:var(--suave);font-size:.9rem}
+  @media (max-width:860px){.lanc{grid-template-columns:repeat(2,1fr)}}
 
-  /* hero */
-  .hero{background:linear-gradient(180deg,var(--azul) 0%,var(--azul2) 100%);color:#fff;position:relative;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.18) 0 90px,transparent 91px),radial-gradient(circle at 88% 75%,rgba(255,255,255,.12) 0 140px,transparent 141px),radial-gradient(circle at 70% 10%,rgba(248,194,29,.25) 0 60px,transparent 61px)}
-  .hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding-top:3.5rem;padding-bottom:5.5rem}
-  .selo{display:inline-flex;gap:.45rem;align-items:center;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:.35rem .9rem;border-radius:999px;font-weight:800;font-size:.85rem}
-  .hero h1{font-size:clamp(2.7rem,6.5vw,4.8rem);margin:.9rem 0 .7rem;text-shadow:0 4px 0 rgba(31,95,114,.35)}
-  .hero h1 em{font-style:normal;color:var(--amarelo)}
-  .hero p.lead{font-size:1.18rem;font-weight:700;max-width:33rem;opacity:.96}
-  .ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:900;text-decoration:none;padding:.9rem 1.4rem;border-radius:16px;font-size:1rem;transition:transform .15s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn.am{background:var(--amarelo);color:var(--marrom2);box-shadow:0 7px 0 -1px var(--amarelo2)}
-  .btn.br{background:#fff;color:var(--azul2);box-shadow:0 7px 0 -1px #cfe8ef}
-  .btn.zap{background:#25d366;color:#fff;box-shadow:0 7px 0 -1px #149c47}
-  .btn.cont{background:transparent;border:2px solid rgba(255,255,255,.6);color:#fff}
-  .hero-arte{position:relative;height:380px}
-  .hero-arte svg{position:absolute;filter:drop-shadow(0 18px 22px rgba(0,0,0,.22))}
-  .onda{position:absolute;left:0;right:0;bottom:-1px;height:60px;color:var(--creme)}
+  .sobre{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+  .sobre .fotos{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-bottom:28px}
+  .sobre .fotos div{border-radius:24px;padding:1.4rem;display:grid;place-items:center;min-height:180px;box-shadow:var(--sombra)}
+  .sobre .fotos div:nth-child(1){background:var(--azul)}
+  .sobre .fotos div:nth-child(2){background:var(--amarelo);transform:translateY(28px)}
+  .sobre .fotos div:nth-child(3){background:#f6a8bf}
+  .sobre .fotos div:nth-child(4){background:var(--marrom);transform:translateY(28px)}
+  .sobre .fotos svg{height:120px;width:auto;filter:drop-shadow(0 10px 12px rgba(0,0,0,.18))}
+  .pontos{list-style:none;display:grid;gap:.9rem;margin-top:1.4rem}
+  .pontos li{display:flex;gap:.9rem;align-items:flex-start}
+  .pontos li span{flex:none;width:2.6rem;height:2.6rem;border-radius:14px;background:var(--ceu);display:grid;place-items:center;font-size:1.3rem}
+  .pontos b{display:block;color:var(--azulEsc);font-size:1.05rem}
+  .pontos p{color:var(--suave);font-weight:700;font-size:.95rem}
+  @media (max-width:860px){.sobre{grid-template-columns:1fr}}
 
-  .status{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.3rem;font-weight:800;background:rgba(0,0,0,.16);padding:.45rem .9rem;border-radius:12px;font-size:.92rem}
-  .status i{width:10px;height:10px;border-radius:50%;background:#8ef0a9;box-shadow:0 0 0 4px rgba(142,240,169,.25)}
-  .status.fech i{background:#ffb3b3;box-shadow:0 0 0 4px rgba(255,179,179,.25)}
+  .passos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.4rem;counter-reset:p}
+  .passos div{counter-increment:p;background:var(--creme);border-radius:var(--raio);padding:1.6rem 1.4rem;box-shadow:var(--sombra);position:relative}
+  .passos div::before{content:counter(p);position:absolute;top:-16px;left:1.4rem;width:2.4rem;height:2.4rem;border-radius:12px;background:var(--amarelo);color:var(--marrom2);font-family:"Baloo 2";font-size:1.4rem;display:grid;place-items:center;box-shadow:0 6px 0 -1px var(--amarelo2)}
+  .passos h3{font-size:1.4rem;color:var(--azulEsc);margin:.6rem 0 .3rem}
+  .passos p{color:var(--suave);font-weight:700}
+  @media (max-width:860px){.passos{grid-template-columns:1fr;gap:1.8rem}}
 
-  /* seções */
-  section.bl{padding:4.2rem 0}
-  .tag{display:inline-block;font-weight:900;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azul2);background:var(--ceu);padding:.35rem .8rem;border-radius:999px}
-  h2.tt{font-size:clamp(2rem,4.5vw,3rem);color:var(--azulEsc);margin:.7rem 0 .4rem}
-  p.sub{color:var(--suave);font-weight:700;font-size:1.08rem;max-width:44rem}
-
-  /* números */
-  .numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:-3.2rem;position:relative;z-index:2}
-  .numeros div{background:#fff;border-radius:var(--raio);padding:1.2rem;text-align:center;box-shadow:var(--sombra)}
-  .numeros b{display:block;font-family:"Baloo 2";font-size:2.2rem;color:var(--azul2);line-height:1}
-  .numeros span{font-weight:800;color:var(--suave);font-size:.9rem}
-  @media (max-width:820px){.numeros{grid-template-columns:repeat(2,1fr)}}
-
-  /* catálogo */
-  .barra-cat{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:1.8rem 0 1.2rem}
-  .busca{flex:1 1 260px;display:flex;align-items:center;gap:.5rem;background:#fff;border:2px solid #dbeef3;border-radius:14px;padding:.2rem .9rem}
-  .busca input{border:0;outline:0;font:inherit;font-weight:700;padding:.6rem 0;width:100%;background:transparent}
-  .abas{display:flex;gap:.45rem;overflow-x:auto;padding-bottom:.4rem;scrollbar-width:thin;margin-bottom:1.4rem}
-  .aba{flex:none;display:flex;align-items:center;gap:.4rem;font-weight:800;padding:.55rem 1rem;border-radius:999px;background:#fff;border:2px solid #dbeef3;color:var(--azulEsc);font-size:.95rem}
-  .aba b{font-size:.75rem;background:var(--ceu);border-radius:999px;padding:.05rem .45rem;color:var(--azul2)}
-  .aba.on{background:var(--azul2);border-color:var(--azul2);color:#fff}
-  .aba.on b{background:rgba(255,255,255,.25);color:#fff}
-  .cat-desc{display:flex;align-items:center;gap:1rem;background:#fff;border-radius:var(--raio);padding:1rem 1.2rem;box-shadow:var(--sombra);margin-bottom:1.2rem}
-  .cat-desc svg{width:56px;height:56px;flex:none}
-  .cat-desc h3{font-size:1.6rem;color:var(--azulEsc)}
-  .cat-desc p{color:var(--suave);font-weight:700;font-size:.95rem}
-  .grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem}
-  .sab{background:#fff;border-radius:20px;padding:1rem .9rem .9rem;text-align:center;box-shadow:0 8px 20px -14px rgba(31,95,114,.6);position:relative;transition:transform .15s,box-shadow .15s;border:2px solid transparent}
-  .sab:hover{transform:translateY(-3px)}
-  .sab.sel{border-color:var(--amarelo);box-shadow:0 10px 24px -12px rgba(229,168,0,.7)}
-  .sab .ilu{height:96px;display:grid;place-items:center;margin-bottom:.4rem}
-  .sab .ilu svg{height:96px;width:auto}
-  .sab h4{font-weight:900;font-size:1rem;color:var(--texto);min-height:2.5em;display:grid;place-items:center;line-height:1.2}
-  .sab .tipo{font-size:.75rem;font-weight:800;color:var(--suave);text-transform:uppercase;letter-spacing:.06em}
-  .sab .novo{position:absolute;top:.6rem;left:.6rem;background:var(--amarelo);color:var(--marrom2);font-weight:900;font-size:.68rem;padding:.15rem .5rem;border-radius:999px}
-  .qtd{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.6rem}
-  .qtd button{width:34px;height:34px;border-radius:50%;font-weight:900;font-size:1.2rem;display:grid;place-items:center}
-  .qtd .m{background:var(--ceu);color:var(--azul2)}
-  .qtd .p{background:var(--azul2);color:#fff}
-  .qtd span{min-width:1.4rem;font-weight:900}
-  .add{margin-top:.6rem;width:100%;padding:.55rem;border-radius:12px;background:var(--ceu);color:var(--azul2);font-weight:900}
-  .vazio{grid-column:1/-1;text-align:center;padding:2rem;color:var(--suave);font-weight:800}
-  .aviso-precos{margin-top:1.4rem;display:flex;gap:.8rem;align-items:center;background:#fff7d9;border:2px dashed #ecc54d;border-radius:16px;padding:.9rem 1.1rem;font-weight:800;color:#7a5b00}
-
-  /* lista flutuante */
-  .lista{position:fixed;left:50%;bottom:16px;transform:translate(-50%,140%);z-index:40;width:min(680px,calc(100% - 24px));background:var(--azulEsc);color:#fff;border-radius:20px;box-shadow:0 18px 40px rgba(0,0,0,.3);display:flex;align-items:center;gap:1rem;padding:.8rem .8rem .8rem 1.2rem;transition:transform .3s}
-  .lista.on{transform:translate(-50%,0)}
-  .lista b{font-family:"Baloo 2";font-size:1.3rem}
-  .lista small{display:block;opacity:.8;font-weight:700}
-  .lista .btn{margin-left:auto;padding:.7rem 1.1rem}
-
-  dialog{border:0;border-radius:24px;padding:0;width:min(560px,calc(100% - 20px));max-height:calc(100dvh - 30px);box-shadow:0 30px 70px rgba(0,0,0,.35)}
-  dialog::backdrop{background:rgba(14,46,56,.6)}
-  .dlg{padding:1.5rem;overflow:auto;max-height:calc(100dvh - 30px)}
-  .dlg h3{font-size:1.9rem;color:var(--azulEsc);display:flex;justify-content:space-between;align-items:center}
-  .dlg h3 button{font-size:1.6rem;color:var(--suave)}
-  .itens{list-style:none;margin:1rem 0;display:grid;gap:.5rem}
-  .itens li{display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--ceu);border-radius:12px;padding:.6rem .8rem;font-weight:800}
-  .itens li small{display:block;color:var(--suave);font-weight:700;font-size:.78rem}
-  .itens li button{color:#c0392b;font-weight:900}
-  .modo{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:1rem 0}
-  .modo label{border:2px solid #dbeef3;border-radius:14px;padding:.7rem;text-align:center;font-weight:900;cursor:pointer;color:var(--azulEsc)}
-  .modo input{display:none}
-  .modo input:checked+span{color:var(--azul2)}
-  .modo label:has(input:checked){border-color:var(--azul2);background:var(--ceu)}
-  .campo{display:grid;gap:.3rem;margin-bottom:.8rem}
-  .campo span{font-weight:900;font-size:.9rem;color:var(--azulEsc)}
-  .campo input,.campo textarea,.campo select{font:inherit;font-weight:700;border:2px solid #dbeef3;border-radius:12px;padding:.7rem .8rem;outline:0;background:#fff}
-  .campo input:focus,.campo textarea:focus,.campo select:focus{border-color:var(--azul)}
-  .duas{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-  .dlg .btn{width:100%;margin-top:.4rem}
-  .obs{font-size:.85rem;color:var(--suave);font-weight:700;text-align:center;margin-top:.7rem}
-
-  /* revenda */
-  .revenda{background:linear-gradient(135deg,var(--marrom) 0%,var(--marrom2) 100%);color:#fff;border-radius:32px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;box-shadow:var(--sombra);position:relative;overflow:hidden}
-  .revenda::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(248,194,29,.18)}
-  .revenda .tag{background:rgba(255,255,255,.15);color:var(--amarelo)}
-  .revenda h2{font-size:clamp(2rem,4.5vw,2.9rem);margin:.7rem 0 .6rem}
-  .revenda p{font-weight:700;opacity:.92}
-  .beneficios{list-style:none;display:grid;gap:.7rem;margin-top:1.4rem}
-  .beneficios li{display:flex;gap:.7rem;align-items:flex-start;font-weight:800}
-  .beneficios li span{flex:none;width:2rem;height:2rem;border-radius:10px;background:rgba(255,255,255,.14);display:grid;place-items:center}
-  .form-rev{background:#fff;color:var(--texto);border-radius:24px;padding:1.6rem;position:relative;z-index:1}
-  .form-rev h3{font-size:1.6rem;color:var(--marrom2);margin-bottom:1rem}
-  @media (max-width:860px){.revenda{grid-template-columns:1fr;padding:2rem 1.3rem}}
-
-  /* horários / local */
-  .info{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem}
-  .card{background:#fff;border-radius:var(--raio);padding:1.6rem;box-shadow:var(--sombra)}
-  .card h3{font-size:1.7rem;color:var(--azulEsc);display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
-  .hor{list-style:none;display:grid;gap:.45rem}
-  .hor li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem .8rem;border-radius:10px;background:var(--ceu);font-weight:800}
-  .hor li.hoje{background:var(--amarelo);color:var(--marrom2)}
-  .hor li span:last-child{white-space:nowrap}
-  .sub-h{font-weight:900;color:var(--marrom);margin:1.1rem 0 .5rem;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase}
-  .mapa{border-radius:18px;overflow:hidden;height:280px;margin-top:1rem;background:var(--ceu)}
-  .mapa iframe{width:100%;height:100%;border:0}
-  @media (max-width:860px){.info{grid-template-columns:1fr}}
-
-  footer{background:var(--azulEsc);color:#d7ecf2;padding:2.6rem 0 6rem;margin-top:3rem}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
-  footer .logo{color:#fff}
-  footer .logo small{color:var(--amarelo)}
-  footer p{font-weight:700;font-size:.9rem}
-  footer .redes{display:flex;gap:.6rem}
-  footer .redes a{background:rgba(255,255,255,.12);padding:.6rem 1rem;border-radius:12px;text-decoration:none;font-weight:800}
-  .zapfix{position:fixed;right:18px;bottom:18px;z-index:35;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25);transition:bottom .3s}
-  .zapfix svg{width:30px;height:30px;fill:#fff}
-  body.com-lista .zapfix{bottom:96px}
-  .toast{position:fixed;left:50%;top:80px;transform:translate(-50%,-20px);opacity:0;background:var(--azulEsc);color:#fff;font-weight:800;padding:.7rem 1.2rem;border-radius:12px;z-index:60;transition:.25s;pointer-events:none}
-  .toast.on{opacity:1;transform:translate(-50%,0)}
-
-  @media (max-width:860px){
-    .hero .wrap{grid-template-columns:1fr;padding-bottom:4.5rem}
-    .hero-arte{height:380px;order:-1;transform:scale(.6);transform-origin:top center;margin-bottom:-150px;width:100%;max-width:520px;justify-self:center}
-  }
+  .faixa{background:linear-gradient(135deg,var(--marrom) 0%,var(--marrom2) 100%);border-radius:32px;color:#fff;padding:2.6rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;position:relative;overflow:hidden;box-shadow:var(--sombra)}
+  .faixa::after{content:"";position:absolute;right:-50px;top:-70px;width:240px;height:240px;border-radius:50%;background:rgba(248,194,29,.18)}
+  .faixa h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:.4rem}
+  .faixa p{font-weight:700;opacity:.92;max-width:38rem}
+  .faixa .btn{position:relative;z-index:1}
+  @media (max-width:760px){.faixa{grid-template-columns:1fr;padding:2rem 1.4rem}}
 </style>
 </head>
 <body>
 
-<header class="topo">
-  <div class="wrap">
-    <a class="logo" href="#inicio" aria-label="Anjos Sorvetes">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 26c6-9 14-8 18-3-6 1-11 5-12 11-4-1-6-4-6-8z" fill="#5bb6cc"/><path d="M56 26c-6-9-14-8-18-3 6 1 11 5 12 11 4-1 6-4 6-8z" fill="#5bb6cc"/><path d="M20 30h24L33 60a1.2 1.2 0 0 1-2 0z" fill="#8a5a3f"/><circle cx="32" cy="18" r="13" fill="#f8c21d"/><circle cx="32" cy="18" r="6.5" fill="#fff"/></svg>
-      <span>Anjos<small>SORVETES</small></span>
-    </a>
-    <nav class="menu">
-      <a href="#catalogo">Sabores</a>
-      <a href="#visite">Horários</a>
-      <a href="#revenda" class="rev">Seja revendedor</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero" id="inicio">
+<section class="hero">
   <div class="wrap">
     <div>
       <span class="selo">🍦 Fábrica e Empório em Anchieta</span>
       <h1>Sorvete feito aqui,<br><em>com sabor de anjo</em></h1>
-      <p class="lead">Picolés, paletas, potes, cones e sundaes produzidos na nossa fábrica no Baixo Pongal. Escolha seus sabores e fale com a gente pelo WhatsApp.</p>
+      <p class="lead">Picolés, paletas, potes, cones e sundaes produzidos na nossa fábrica no Baixo Pongal, em Anchieta.</p>
       <div class="ctas">
-        <a class="btn am" href="#catalogo">Ver todos os sabores</a>
-        <a class="btn cont" href="#revenda">Quero revender</a>
+        <a class="btn am" href="pedidos.html">Fazer meu pedido</a>
+        <a class="btn cont" href="#produtos">Conhecer os produtos</a>
       </div>
-      <div class="status" id="status"><i></i><span>Carregando horário…</span></div>
+      <div class="status" id="status"><i></i><span>…</span></div>
     </div>
-    <div class="hero-arte" aria-hidden="true" id="heroArte"></div>
+    <div class="hero-arte" id="heroArte"></div>
   </div>
   <svg class="onda" viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="currentColor" d="M0 30c120 20 240 30 360 22S600 10 720 12s240 30 360 34 240-10 360-24v38H0z"/></svg>
 </section>
@@ -218,57 +86,70 @@
   </div>
 </div>
 
-<!-- CATÁLOGO -->
-<section class="bl" id="catalogo">
+<section class="bl" id="produtos">
   <div class="wrap">
-    <span class="tag">Catálogo</span>
-    <h2 class="tt">Escolha seus sabores</h2>
-    <p class="sub">Toque no <b>+</b> para montar sua lista. No final, envie pelo WhatsApp para consultar valores e disponibilidade.</p>
-
-    <div class="barra-cat">
-      <label class="busca"><span>🔎</span><input id="busca" type="search" placeholder="Buscar sabor (ex.: morango, ninho…)"></label>
+    <div class="topo-sec">
+      <div><span class="tag">Nossos produtos</span><h2 class="tt">Uma linha para cada vontade</h2>
+      <p class="sub">Do picolé de fruta ao pote de 1 litro. Toque numa linha para ver todos os sabores.</p></div>
+      <a class="btn az" href="pedidos.html">Ver catálogo completo</a>
     </div>
-    <div class="abas" id="abas"></div>
-    <div class="cat-desc" id="catDesc"></div>
-    <div class="grade" id="grade"></div>
-    <div class="aviso-precos"><span style="font-size:1.4rem">💬</span><div>Os valores variam por tamanho e quantidade. Monte sua lista e a gente responde rapidinho pelo WhatsApp.</div></div>
+    <div class="linhas" id="linhas"></div>
   </div>
 </section>
 
-<!-- REVENDA -->
-<section class="bl" id="revenda">
+<section class="bl claro">
   <div class="wrap">
-    <div class="revenda">
-      <div>
-        <span class="tag">Para comércios</span>
-        <h2>Tenha Anjos no seu comércio</h2>
-        <p>Sorveterias, lanchonetes, mercados, quiosques de praia: leve a linha completa Anjos para os seus clientes.</p>
-        <ul class="beneficios">
-          <li><span>🍦</span>Mais de 80 sabores entre picolés, paletas, potes, cones e sundaes</li>
-          <li><span>🏭</span>Produção própria em Anchieta, perto de você</li>
-          <li><span>🧊</span>Linha zero açúcar e opções para todos os públicos</li>
-          <li><span>🤝</span>Atendimento direto com a fábrica</li>
-        </ul>
-      </div>
-      <form class="form-rev" id="formRev">
-        <h3>Quero ser revendedor</h3>
-        <label class="campo"><span>Seu nome</span><input id="rNome" required></label>
-        <label class="campo"><span>Nome do comércio</span><input id="rLoja" required></label>
-        <div class="duas">
-          <label class="campo"><span>Cidade</span><input id="rCidade" required></label>
-          <label class="campo"><span>Tipo</span>
-            <select id="rTipo"><option>Sorveteria</option><option>Lanchonete</option><option>Mercado / Padaria</option><option>Quiosque / Praia</option><option>Outro</option></select>
-          </label>
-        </div>
-        <label class="campo"><span>Mensagem (opcional)</span><textarea id="rMsg" rows="2" placeholder="Ex.: tenho freezer, quero começar com picolés"></textarea></label>
-        <button class="btn zap" type="submit">Enviar pelo WhatsApp</button>
-        <p class="obs">Sua mensagem chega direto na fábrica.</p>
-      </form>
+    <span class="tag">Lançamentos</span>
+    <h2 class="tt">Acabou de sair da fábrica</h2>
+    <p class="sub">Os sabores mais recentes da Anjos. Peça no Empório ou procure na sua sorveteria favorita.</p>
+    <div class="lanc">
+      <div class="rv"><span id="l1"></span><h3>Brigadeiro</h3><p>Picolé de cobertura com chocolate e granulado.</p></div>
+      <div class="rv"><span id="l2"></span><h3>Delírio</h3><p>Cremosidade e chocolate de repetir.</p></div>
+      <div class="rv"><span id="l3"></span><h3>Pistache</h3><p>Cremoso, marcante e irresistível.</p></div>
+      <div class="rv"><span id="l4"></span><h3>Paleta de Avelã</h3><p>Intensa, com toque de avelã e chocolate.</p></div>
     </div>
   </div>
 </section>
 
-<!-- VISITE -->
+<section class="bl">
+  <div class="wrap sobre">
+    <div class="fotos rv" id="sobreArte"><div></div><div></div><div></div><div></div></div>
+    <div>
+      <span class="tag">Quem somos</span>
+      <h2 class="tt">Da nossa fábrica para a sua mão</h2>
+      <p class="sub">A Anjos Sorvetes produz em Anchieta e leva seus sorvetes para sorveterias, lanchonetes e quiosques da região. No nosso Empório, você encontra a linha completa.</p>
+      <ul class="pontos">
+        <li class="rv"><span>🏭</span><div><b>Produção própria</b><p>Tudo feito na fábrica do Baixo Pongal.</p></div></li>
+        <li class="rv"><span>🛒</span><div><b>Empório aberto todos os dias</b><p>Segunda a sábado e também domingos e feriados à tarde.</p></div></li>
+        <li class="rv"><span>🤝</span><div><b>Parceiros pela região</b><p>Encontre Anjos nas sorveterias parceiras ou leve para o seu comércio.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="bl claro">
+  <div class="wrap">
+    <span class="tag">Como pedir</span>
+    <h2 class="tt">Pedir é rapidinho</h2>
+    <div class="passos">
+      <div class="rv"><h3>Escolha os sabores</h3><p>Na página de pedidos, navegue pelas linhas e toque em <b>+</b> nos sabores que quiser.</p></div>
+      <div class="rv"><h3>Envie pelo WhatsApp</h3><p>Sua lista vai pronta para a nossa equipe, que responde com valores e disponibilidade.</p></div>
+      <div class="rv"><h3>Retire no Empório</h3><p>Combine o horário e passe para buscar no Baixo Pongal.</p></div>
+    </div>
+    <div class="ctas" style="margin-top:2rem"><a class="btn am" href="pedidos.html">Começar meu pedido</a></div>
+  </div>
+</section>
+
+<section class="bl">
+  <div class="wrap">
+    <div class="faixa rv">
+      <div><h2>Tem um comércio? Venda Anjos!</h2>
+      <p>Sorveterias, lanchonetes, mercados e quiosques: leve mais de 80 sabores para os seus clientes, direto da fábrica.</p></div>
+      <a class="btn am" href="revenda.html">Quero ser revendedor</a>
+    </div>
+  </div>
+</section>
+
 <section class="bl" id="visite" style="padding-top:1rem">
   <div class="wrap">
     <span class="tag">Visite a gente</span>
@@ -286,211 +167,39 @@
         <h3>📍 Como chegar</h3>
         <div class="mapa"><iframe loading="lazy" title="Mapa" src="https://maps.google.com/maps?q=Baixo%20Pongal%2C%20Anchieta%20-%20ES&z=14&output=embed"></iframe></div>
         <div class="ctas" style="margin-top:1rem">
-          <a class="btn zap" id="zapContato" target="_blank" rel="noopener">WhatsApp (28) 99968-2200</a>
-          <a class="btn br" href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener" style="border:2px solid #dbeef3">@anjossorvetes</a>
+          <a class="btn zap" id="zapContato" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn br" href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener">@anjossorvetes</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <a class="logo" href="#inicio"><svg viewBox="0 0 64 64" aria-hidden="true" style="width:40px;height:40px"><path d="M8 26c6-9 14-8 18-3-6 1-11 5-12 11-4-1-6-4-6-8z" fill="#9fdbea"/><path d="M56 26c-6-9-14-8-18-3 6 1 11 5 12 11 4-1 6-4 6-8z" fill="#9fdbea"/><path d="M20 30h24L33 60a1.2 1.2 0 0 1-2 0z" fill="#c98f6c"/><circle cx="32" cy="18" r="13" fill="#f8c21d"/><circle cx="32" cy="18" r="6.5" fill="#1f5f72"/></svg><span>Anjos<small>SORVETES</small></span></a>
-    <p>Rua Projetada, s/n — Baixo Pongal, Anchieta (ES)<br>Versão de demonstração do site.</p>
-    <div class="redes"><a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener">Instagram</a><a id="zapRodape" target="_blank" rel="noopener">WhatsApp</a></div>
-  </div>
-</footer>
-
-<a class="zapfix" id="zapFix" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.9 5.2 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg></a>
-
-<div class="lista" id="lista">
-  <div><b id="lQtd">0 itens</b><small>na sua lista</small></div>
-  <button class="btn am" id="abrirLista">Ver lista e enviar</button>
-</div>
-
-<dialog id="dlg">
-  <div class="dlg">
-    <h3>Sua lista <button id="fechar" aria-label="Fechar">✕</button></h3>
-    <ul class="itens" id="itens"></ul>
-    <div class="modo">
-      <label><input type="radio" name="modo" value="consumo" checked><span>🍦 Para mim</span></label>
-      <label><input type="radio" name="modo" value="revenda"><span>🏪 Para revender</span></label>
-    </div>
-    <label class="campo"><span>Seu nome</span><input id="nome" autocomplete="name"></label>
-    <label class="campo" id="campoLoja" hidden><span>Nome do comércio e cidade</span><input id="loja"></label>
-    <label class="campo"><span>Observações (opcional)</span><textarea id="obs" rows="2" placeholder="Ex.: retiro no empório amanhã à tarde"></textarea></label>
-    <button class="btn zap" id="enviar">Consultar valores no WhatsApp</button>
-    <p class="obs">A mensagem abre pronta no WhatsApp da Anjos.</p>
-  </div>
-</dialog>
-
-<div class="toast" id="toast"></div>
-
+<script src="comum.js"></script>
 <script>
-// ================== CONFIGURAÇÃO ==================
-const WHATSAPP = "5528999682200";
-// Horários do Empório: dia da semana (0 = domingo) -> [abre, fecha]
-const HORARIO = { 0:["13:00","18:00"], 1:["09:00","18:00"], 2:["09:00","18:00"], 3:["09:00","18:00"], 4:["09:00","18:00"], 5:["09:00","18:00"], 6:["09:00","18:00"] };
+  const BG = { potes:"#fde3ec", cobertura:"#fff1c7", recheados:"#e3f5d6", leite:"#fff4c4", frutados:"#efe3f8", zero:"#e8f6fa", paletas:"#fde3ec", cones:"#f3e3d8", sundae:"#fde3e6", copinho:"#e8f6fa" };
+  const COR_LINHA = { potes:"#f28aa8", cobertura:"#f8c21d", recheados:"#9bd47a", leite:"#f7d54a", frutados:"#8d5bb5", zero:"#8a5a3f", paletas:"#f28aa8", cones:"#8a5a3f", sundae:"#ef6b7c", copinho:"#5bb6cc" };
+  $("#linhas").innerHTML = CATS.map(c => `<a class="linha rv" href="pedidos.html?cat=${c.id}" style="--bg:${BG[c.id]}">
+    <div class="ilu">${arte(c.forma, COR_LINHA[c.id])}</div>
+    <h3>${c.nome}</h3><p>${c.desc}</p>
+    <span class="v">${c.id === "copinho" ? "Ver opções" : c.s.length + " sabores"} →</span></a>`).join("");
+  $("#l1").innerHTML = arte("cob","#8a5a3f"); $("#l2").innerHTML = arte("cob","#f8c21d");
+  $("#l3").innerHTML = arte("pic","#9bd47a"); $("#l4").innerHTML = arte("paleta","#f2a141");
+  const sa = document.querySelectorAll("#sobreArte div");
+  [["cone","#f28aa8"],["fruta","#8d5bb5"],["pote","#8a5a3f"],["sundae","#f8c21d"]].forEach(([f,c],i) => sa[i].innerHTML = arte(f,c));
 
-// ================== CATÁLOGO ==================
-const CATS = [
-  { id:"potes", nome:"Potes", forma:"pote", desc:"Potes de 1/2 litro e 1 litro, para levar para casa.", tam:"1/2 L e 1 L",
-    s:["Abacaxi","Banana","Bombom","Brigadeiro","Chocolate","Chokito","Coco","Creme","Flocos","Frutas do Bosque","Iogurte Grego","Kinder Ovo","Malt Ovo","Morango","Napolitano","Ninho Trufado","Ouro Branco","Pavê","Prestígio","Sonho de Valsa","Tentação","Torta de Limão"] },
-  { id:"cobertura", nome:"Picolé de cobertura", forma:"cob", desc:"Picolés com casquinha crocante de chocolate.",
-    s:["Bombom","Brigadeiro","Crocante","Maltovo","Tentação","Skimo","Skimo Coco","Skimo Branco","Pé de Moleque","Torta de Limão","Chokiss","Suflê de Morango","Delírio*"] },
-  { id:"recheados", nome:"Picolé recheado", forma:"rech", desc:"Cremosos por fora, recheados por dentro.",
-    s:["Abacaxi Suíço","Limão Suíço","Mousse de Maracujá","Romeu e Julieta","Chocomenta","Tapioca com Doce de Leite","Ninho Trufado"] },
-  { id:"leite", nome:"Picolé ao leite", forma:"pic", desc:"Os clássicos cremosos de todo dia.",
-    s:["Milho Verde","Biscoito","Abacate","Amendoim","Banana","Chiclete","Chocolate","Coco","Jaca","Abacaxi com Coco","Morango","Flocos","Graviola","Leite Condensado","Mini Saia","Pistache*"] },
-  { id:"frutados", nome:"Picolé frutado", forma:"fruta", desc:"Feitos com fruta, leves e refrescantes.",
-    s:["Abacaxi","Uva","Goiaba","Açaí","Limão","Jabuticaba","Manga","Tangerina"] },
-  { id:"zero", nome:"Zero açúcar", forma:"pic", desc:"Todo o sabor, sem adição de açúcar.", s:["Coco","Chocolate"] },
-  { id:"paletas", nome:"Paletas", forma:"paleta", desc:"Paletas mexicanas recheadas e generosas.",
-    s:["Ninho Trufado","Ovomaltine","Kinder Bueno","Coco com Nutella","Iogurte Grego com Frutas Vermelhas","Bombom com Nutella","Morango com Leite Condensado","Avelã*"] },
-  { id:"cones", nome:"Cones", forma:"cone", desc:"Casquinha crocante com cobertura.", s:["Chocolate","Morango","Ovomaltine"] },
-  { id:"sundae", nome:"Sundae", forma:"sundae", desc:"Copo com sorvete e calda, cremosidade 5 estrelas.", s:["Morango","Chocolate","Maracujá","Limão","Uva","Ninho Trufado"] },
-  { id:"copinho", nome:"Copinho", forma:"copo", desc:"Copinhos individuais, ótimos para festas e lanches.", s:["Consulte os sabores"] },
-];
-
-// cor principal por sabor
-const CORES = [
-  [/morango|frutas vermelhas|frutas do bosque|suflê/i,"#f28aa8"],[/chocolate|brigadeiro|bombom|chokito|chokiss|tentação|maltovo|malt|ovomaltine|delírio|crocante|kinder|skimo$|sonho|ouro|prestígio|pavê|chocomenta|biscoito/i,"#8a5a3f"],
-  [/limão|abacate|pistache|menta/i,"#9bd47a"],[/uva|açaí|jabuticaba|romeu/i,"#8d5bb5"],[/coco|creme|ninho|iogurte|leite|skimo branco|tapioca|graviola|napolitano|flocos/i,"#fbf3e2"],
-  [/abacaxi|maracujá|milho|banana|jaca/i,"#f7d54a"],[/manga|tangerina|pé de moleque|amendoim|avelã/i,"#f2a141"],[/goiaba|mini saia|chiclete/i,"#ef6b7c"],
-];
-const corDe = n => (CORES.find(([r]) => r.test(n)) || [0,"#f6e2c2"])[1];
-const escurecer = (hex, f=.78) => "#" + hex.slice(1).match(/../g).map(h => Math.round(parseInt(h,16)*f).toString(16).padStart(2,"0")).join("");
-
-// ilustrações (SVG gerado)
-function arte(forma, cor) {
-  const c2 = escurecer(cor), choc = "#6a4029", pau = "#e9c48f";
-  const S = (w,h,b) => `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${b}</svg>`;
-  switch (forma) {
-    case "pote": return S(100,90,`<ellipse cx="50" cy="20" rx="42" ry="10" fill="${c2}"/><path d="M10 22h80l-7 56a6 6 0 0 1-6 5H23a6 6 0 0 1-6-5z" fill="#fff" stroke="#d6e9ee" stroke-width="2"/><path d="M14 34h72l-2 16H16z" fill="${cor}"/><path d="M10 18h80v6H10z" fill="#f8c21d"/><rect x="38" y="56" width="24" height="12" rx="6" fill="#5bb6cc"/>`);
-    case "cob": return S(60,110,`<rect x="25" y="70" width="10" height="38" rx="4" fill="${pau}"/><rect x="8" y="4" width="44" height="74" rx="20" fill="${cor}"/><path d="M8 24a20 20 0 0 1 44 0v34a20 20 0 0 1-44 0z" fill="${choc}"/><path d="M14 20c6-6 18-8 28-2" stroke="#8d5d42" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="20" cy="42" r="2" fill="${cor}"/><circle cx="36" cy="52" r="2" fill="${cor}"/><circle cx="30" cy="34" r="2" fill="${cor}"/>`);
-    case "rech": return S(60,110,`<rect x="25" y="70" width="10" height="38" rx="4" fill="${pau}"/><rect x="8" y="4" width="44" height="74" rx="20" fill="${cor}"/><rect x="20" y="16" width="20" height="50" rx="10" fill="${c2}"/><path d="M14 18c5-5 12-6 18-4" stroke="#fff" stroke-opacity=".6" stroke-width="4" fill="none" stroke-linecap="round"/>`);
-    case "fruta": return S(60,110,`<rect x="25" y="70" width="10" height="38" rx="4" fill="${pau}"/><path d="M8 24a22 22 0 0 1 44 0v50H8z" fill="${cor}" opacity=".92"/><path d="M8 50h44v24H8z" fill="${c2}" opacity=".5"/><path d="M15 18c5-6 12-7 18-5" stroke="#fff" stroke-opacity=".7" stroke-width="4" fill="none" stroke-linecap="round"/>`);
-    case "paleta": return S(70,110,`<rect x="30" y="72" width="10" height="36" rx="4" fill="${pau}"/><rect x="6" y="4" width="58" height="76" rx="12" fill="${cor}"/><path d="M6 46h58v22a12 12 0 0 1-12 12H18A12 12 0 0 1 6 68z" fill="${c2}"/><path d="M6 44c10 6 20-4 29 2s19-4 29 2" stroke="${choc}" stroke-width="5" fill="none"/>`);
-    case "cone": return S(70,110,`<path d="M12 44h46L37 106a2 2 0 0 1-4 0z" fill="#e2a15c"/><path d="M18 52l30 30M30 46l22 22M16 66l20 20M44 46l-24 24M54 52l-30 30" stroke="#c07b3a" stroke-width="2"/><path d="M8 46c0-22 54-22 54 0 0 6-54 6-54 0z" fill="${cor}"/><path d="M12 38c6-16 40-18 46 0" fill="${c2}"/><circle cx="35" cy="12" r="7" fill="#d23c4b"/>`);
-    case "sundae": return S(80,110,`<path d="M10 40h60l-8 50H18z" fill="#fff" opacity=".85" stroke="#d6e9ee" stroke-width="2"/><path d="M14 52h52l-2 14H16z" fill="${cor}"/><path d="M8 40c4-24 60-24 64 0z" fill="#fbf3e2"/><path d="M14 36c8 6 16-6 26 0s18-6 26 0" stroke="${c2}" stroke-width="6" fill="none" stroke-linecap="round"/><rect x="24" y="90" width="32" height="8" rx="3" fill="#d6e9ee"/><path d="M52 6l-6 30" stroke="#8a5a3f" stroke-width="4" stroke-linecap="round"/>`);
-    case "copo": return S(80,90,`<path d="M12 24h56l-6 56H18z" fill="#fff" stroke="#d6e9ee" stroke-width="2"/><ellipse cx="40" cy="22" rx="30" ry="8" fill="#f8c21d"/><rect x="24" y="44" width="32" height="18" rx="6" fill="#5bb6cc"/>`);
-    default: return S(60,110,`<rect x="25" y="70" width="10" height="38" rx="4" fill="${pau}"/><rect x="8" y="4" width="44" height="74" rx="20" fill="${cor}"/><path d="M15 18c5-6 12-7 18-5" stroke="#fff" stroke-opacity=".7" stroke-width="4" fill="none" stroke-linecap="round"/>`);
-  }
-}
-
-// ================== ESTADO ==================
-const $ = s => document.querySelector(s);
-const ITENS = []; // {id, cat, sabor, novo}
-CATS.forEach(c => c.s.forEach(n => { const novo = n.endsWith("*"); const sabor = n.replace("*",""); ITENS.push({ id: c.id + "|" + sabor, cat: c, sabor, novo }); }));
-const qtd = {}; let catAtual = "todos";
-const norm = t => t.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
-const zap = txt => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`;
-function toast(t){ const e=$("#toast"); e.textContent=t; e.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(()=>e.classList.remove("on"),1800); }
-
-$("#nSab").textContent = ITENS.filter(i => i.cat.id !== "copinho").length;
-
-// abas
-function desenharAbas() {
-  const abas = [{ id:"todos", nome:"Todos", n: ITENS.length }, ...CATS.map(c => ({ id:c.id, nome:c.nome, n:c.s.length }))];
-  $("#abas").innerHTML = abas.map(a => `<button class="aba ${a.id===catAtual?"on":""}" data-c="${a.id}">${a.nome}<b>${a.n}</b></button>`).join("");
-}
-$("#abas").addEventListener("click", e => { const b = e.target.closest(".aba"); if (!b) return; catAtual = b.dataset.c; desenharAbas(); desenharGrade(); });
-
-function desenharGrade() {
-  const q = norm($("#busca").value.trim());
-  const c = CATS.find(x => x.id === catAtual);
-  $("#catDesc").innerHTML = c ? `${arte(c.forma, "#f8c21d")}<div><h3>${c.nome}</h3><p>${c.desc}${c.tam ? " Tamanhos: " + c.tam + "." : ""}</p></div>`
-    : `${arte("cone","#f28aa8")}<div><h3>Todos os produtos</h3><p>Picolés, paletas, potes, cones, sundaes e copinhos. Itens com selo <b>Novo</b> são lançamentos recentes.</p></div>`;
-  const l = ITENS.filter(i => (catAtual === "todos" || i.cat.id === catAtual) && (!q || norm(i.sabor + " " + i.cat.nome).includes(q)));
-  $("#grade").innerHTML = l.length ? l.map(i => {
-    const n = qtd[i.id] || 0;
-    return `<div class="sab ${n?"sel":""}">${i.novo?'<span class="novo">Novo</span>':""}
-      <div class="ilu">${arte(i.cat.forma, corDe(i.sabor))}</div>
-      <div class="tipo">${i.cat.nome}</div><h4>${i.sabor}</h4>
-      ${n ? `<div class="qtd"><button class="m" data-id="${i.id}" data-d="-1" aria-label="Remover">−</button><span>${n}</span><button class="p" data-id="${i.id}" data-d="1" aria-label="Adicionar">+</button></div>`
-          : `<button class="add" data-id="${i.id}" data-d="1">+ Adicionar</button>`}
-    </div>`; }).join("") : `<div class="vazio">Nenhum sabor encontrado 🍦</div>`;
-}
-$("#busca").addEventListener("input", () => { if ($("#busca").value && catAtual !== "todos") { catAtual = "todos"; desenharAbas(); } desenharGrade(); });
-$("#grade").addEventListener("click", e => { const b = e.target.closest("[data-id]"); if (!b) return; mudar(b.dataset.id, +b.dataset.d); });
-
-function mudar(id, d) {
-  qtd[id] = Math.max(0, (qtd[id] || 0) + d); if (!qtd[id]) delete qtd[id];
-  if (d > 0) toast("Adicionado à lista ✓");
-  desenharGrade(); atualizarLista();
-}
-function atualizarLista() {
-  const tot = Object.values(qtd).reduce((a,b) => a + b, 0);
-  $("#lQtd").textContent = tot + (tot === 1 ? " item" : " itens");
-  $("#lista").classList.toggle("on", tot > 0); document.body.classList.toggle("com-lista", tot > 0);
-  $("#itens").innerHTML = Object.entries(qtd).map(([id,n]) => { const i = ITENS.find(x => x.id === id);
-    return `<li><div>${n}x ${i.sabor}<small>${i.cat.nome}</small></div><button data-rm="${id}" aria-label="Remover">Remover</button></li>`; }).join("");
-  if (!tot && $("#dlg").open) $("#dlg").close();
-}
-$("#itens").addEventListener("click", e => { const b = e.target.closest("[data-rm]"); if (b) { delete qtd[b.dataset.rm]; desenharGrade(); atualizarLista(); } });
-$("#abrirLista").onclick = () => $("#dlg").showModal();
-$("#fechar").onclick = () => $("#dlg").close();
-document.querySelectorAll('input[name=modo]').forEach(r => r.addEventListener("change", () => { $("#campoLoja").hidden = r.value !== "revenda" || !r.checked; if (r.checked && r.value === "consumo") $("#campoLoja").hidden = true; }));
-
-// lembrar nome
-try { $("#nome").value = localStorage.getItem("anjos_nome") || ""; } catch(e) {}
-
-$("#enviar").onclick = () => {
-  const nome = $("#nome").value.trim();
-  if (!nome) { $("#nome").focus(); toast("Digite seu nome"); return; }
-  try { localStorage.setItem("anjos_nome", nome); } catch(e) {}
-  const revenda = document.querySelector('input[name=modo]:checked').value === "revenda";
-  const grupos = {};
-  Object.entries(qtd).forEach(([id,n]) => { const i = ITENS.find(x => x.id === id); (grupos[i.cat.nome] ||= []).push(`${n}x ${i.sabor}`); });
-  let t = `Olá, Anjos! 🍦 ${revenda ? "Tenho interesse em *revender* e gostaria" : "Gostaria"} de consultar valores destes itens:\n`;
-  for (const g in grupos) t += `\n*${g}*\n` + grupos[g].map(x => "• " + x).join("\n") + "\n";
-  t += `\n*Nome:* ${nome}`;
-  if (revenda && $("#loja").value.trim()) t += `\n*Comércio:* ${$("#loja").value.trim()}`;
-  if ($("#obs").value.trim()) t += `\n*Obs.:* ${$("#obs").value.trim()}`;
-  window.open(zap(t), "_blank");
-};
-
-$("#formRev").addEventListener("submit", e => {
-  e.preventDefault();
-  let t = `Olá, Anjos! 🏪 Quero ser revendedor.\n\n*Nome:* ${$("#rNome").value.trim()}\n*Comércio:* ${$("#rLoja").value.trim()} (${$("#rTipo").value})\n*Cidade:* ${$("#rCidade").value.trim()}`;
-  if ($("#rMsg").value.trim()) t += `\n*Mensagem:* ${$("#rMsg").value.trim()}`;
-  window.open(zap(t), "_blank");
-});
-
-// contatos
-["#zapContato","#zapRodape","#zapFix"].forEach(s => $(s).href = zap("Olá, Anjos! 🍦 Vim pelo site."));
-
-// horários
-const DIAS = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
-const fmt = h => h.replace(/^0/,"").replace(":00","h").replace(":","h");
-function statusLoja() {
-  const d = new Date(), h = HORARIO[d.getDay()], min = d.getHours()*60 + d.getMinutes();
-  const m = s => { const [a,b] = s.split(":").map(Number); return a*60+b; };
-  const aberto = h && min >= m(h[0]) && min < m(h[1]);
-  const el = $("#status"); el.classList.toggle("fech", !aberto);
-  let txt;
-  if (aberto) txt = `Empório aberto agora · até ${fmt(h[1])}`;
-  else { let k = 0, dia; do { k++; dia = (d.getDay() + (h && min < m(h[0]) ? 0 : k)) % 7; } while (!HORARIO[dia] && k < 7);
-    const hoje = h && min < m(h[0]); txt = `Empório fechado · abre ${hoje ? "hoje" : DIAS[dia].toLowerCase()} às ${fmt(HORARIO[hoje ? d.getDay() : dia][0])}`; }
-  el.querySelector("span").textContent = txt;
-  $("#horEmporio").innerHTML = [
-    ["Segunda a sábado", "9h às 18h", d.getDay() >= 1],
-    ["Domingos e feriados", "13h às 18h", d.getDay() === 0]
-  ].map(([a,b,hj]) => `<li class="${hj?"hoje":""}"><span>${a}${hj?" (hoje)":""}</span><span>${b}</span></li>`).join("");
-}
-statusLoja(); setInterval(statusLoja, 60000);
-
-// arte do topo
-$("#heroArte").innerHTML = [
-  ["paleta","#f28aa8","left:4%;top:40px;width:110px;transform:rotate(-14deg)"],
-  ["cob","#f8c21d","left:32%;top:0;width:118px;transform:rotate(4deg)"],
-  ["cone","#8a5a3f","right:6%;top:30px;width:130px;transform:rotate(12deg)"],
-  ["fruta","#9bd47a","left:18%;top:190px;width:80px;transform:rotate(-6deg)"],
-  ["pote","#8d5bb5","right:16%;top:220px;width:150px"]
-].map(([f,c,st]) => arte(f,c).replace("<svg", `<svg style="${st}"`)).join("");
-
-desenharAbas(); desenharGrade(); atualizarLista();
+  montarLayout("inicio");
+  $("#nSab").textContent = TOTAL_SABORES;
+  $("#zapContato").href = zap("Olá, Anjos! 🍦 Vim pelo site.");
+  desenharStatus("#status"); desenharHorarios("#horEmporio");
+  setInterval(() => desenharStatus("#status"), 60000);
+  arteHero("#heroArte", [
+    ["paleta","#f28aa8","left:4%;top:40px;width:110px;transform:rotate(-14deg)"],
+    ["cob","#f8c21d","left:32%;top:0;width:118px;transform:rotate(4deg)"],
+    ["cone","#8a5a3f","right:6%;top:30px;width:130px;transform:rotate(12deg)"],
+    ["fruta","#9bd47a","left:18%;top:190px;width:80px;transform:rotate(-6deg)"],
+    ["pote","#8d5bb5","right:16%;top:220px;width:150px"]
+  ]);
 </script>
 </body>
 </html>
