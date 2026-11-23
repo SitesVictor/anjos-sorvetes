@@ -26,21 +26,24 @@
   @media (max-width:520px){.cat-desc .cf{width:96px;height:96px}}
   .cat-desc h3{font-size:1.6rem;color:var(--azulEsc)}
   .cat-desc p{color:var(--suave);font-weight:700;font-size:.95rem}
-  .grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.8rem}
-  .sab{background:#fff;border-radius:20px;padding:1rem .9rem .9rem;text-align:center;box-shadow:0 8px 20px -14px rgba(31,95,114,.6);position:relative;transition:transform .15s,box-shadow .15s;border:2px solid transparent;display:flex;flex-direction:column}
-  .sab:hover{transform:translateY(-3px)}
-  .sab.sel{border-color:var(--amarelo);box-shadow:0 10px 24px -12px rgba(229,168,0,.7)}
-  .sab .bola{width:70px;height:70px;border-radius:50%;margin:.2rem auto .6rem;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.85) 0 9%,transparent 10%),radial-gradient(circle at 50% 50%,var(--c) 0 62%,var(--c2) 100%);box-shadow:inset 0 -6px 10px rgba(0,0,0,.12),0 8px 14px -8px var(--c2);border:3px solid #fff;outline:2px solid #eef6f8}
-  .sab h4{font-weight:900;font-size:1rem;min-height:2.5em;display:grid;place-items:center;line-height:1.2}
-  .sab .tipo{font-size:.72rem;font-weight:800;color:var(--suave);text-transform:uppercase;letter-spacing:.06em}
-  .sab .novo{position:absolute;top:.6rem;left:.6rem;background:var(--amarelo);color:var(--marrom2);font-weight:900;font-size:.68rem;padding:.15rem .5rem;border-radius:999px}
-  .qtd{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:auto;padding-top:.6rem}
-  .qtd button{width:34px;height:34px;border-radius:50%;font-weight:900;font-size:1.2rem;display:grid;place-items:center}
+  .grade{display:grid;gap:1.4rem}
+  .grupo{background:#fff;border-radius:var(--raio);box-shadow:var(--sombra);overflow:hidden}
+  .grupo h3{font-size:1.35rem;color:var(--azulEsc);padding:.9rem 1.2rem;background:var(--ceu);display:flex;justify-content:space-between;align-items:center}
+  .grupo h3 small{font-family:Nunito;font-size:.8rem;font-weight:800;color:var(--suave)}
+  .itens-l{list-style:none;display:grid;grid-template-columns:1fr 1fr}
+  .itens-l li{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.7rem 1.2rem;border-bottom:1px solid #eef5f7;min-height:58px}
+  .itens-l li:nth-child(odd){border-right:1px solid #eef5f7}
+  .itens-l li.sel{background:#fffbea}
+  .itens-l .nm{font-weight:800;font-size:1rem}
+  .itens-l .novo{display:inline-block;margin-left:.4rem;background:var(--amarelo);color:var(--marrom2);font-weight:900;font-size:.66rem;padding:.1rem .45rem;border-radius:999px;vertical-align:middle}
+  .qtd{display:flex;align-items:center;gap:.45rem;flex:none}
+  .qtd button{width:32px;height:32px;border-radius:50%;font-weight:900;font-size:1.15rem;display:grid;place-items:center}
   .qtd .m{background:var(--ceu);color:var(--azul2)}
   .qtd .p{background:var(--azul2);color:#fff}
-  .qtd span{min-width:1.4rem;font-weight:900}
-  .add{margin-top:auto;width:100%;padding:.55rem;border-radius:12px;background:var(--ceu);color:var(--azul2);font-weight:900}
-  .sab .add{margin-top:.6rem}
+  .qtd span{min-width:1.2rem;text-align:center;font-weight:900}
+  .add{flex:none;padding:.4rem .9rem;border-radius:999px;background:var(--ceu);color:var(--azul2);font-weight:900;font-size:.9rem}
+  .add:hover{background:var(--azul2);color:#fff}
+  @media (max-width:700px){.itens-l{grid-template-columns:1fr}.itens-l li:nth-child(odd){border-right:0}}
   .vazio{grid-column:1/-1;text-align:center;padding:2rem;color:var(--suave);font-weight:800}
   .aviso-precos{margin-top:1.6rem;display:flex;gap:.8rem;align-items:center;background:#fff7d9;border:2px dashed #ecc54d;border-radius:16px;padding:.9rem 1.1rem;font-weight:800;color:#7a5b00}
 
@@ -137,13 +140,13 @@
     $("#catDesc").innerHTML = c ? `${fotoCat(c, "cf")}<div><h3>${c.nome}</h3><p>${c.desc}${c.tam ? " Tamanhos: " + c.tam + "." : ""}</p></div>`
       : `<div class="cf mosaicinho"><img src="img/cobertura.webp" alt=""><img src="img/frutados.webp" alt=""><img src="img/potes.webp" alt=""><img src="img/cones.webp" alt=""></div><div><h3>Todos os produtos</h3><p>Picolés, paletas, potes, cones, sundaes e copinhos. Itens com selo <b>Novo</b> são lançamentos.</p></div>`;
     const l = ITENS.filter(i => (catAtual === "todos" || i.cat.id === catAtual) && (!q || norm(i.sabor + " " + i.cat.nome).includes(q)));
-    $("#grade").innerHTML = l.length ? l.map(i => { const n = qtd[i.id] || 0;
-      return `<div class="sab ${n?"sel":""}">${i.novo?'<span class="novo">Novo</span>':""}
-        <div class="bola" style="--c:${i.cat.id === "copinho" ? "#5bb6cc" : corDe(i.sabor)};--c2:${escurecer(i.cat.id === "copinho" ? "#5bb6cc" : corDe(i.sabor), .82)}"></div>
-        <div class="tipo">${i.cat.nome}</div><h4>${i.sabor}</h4>
-        ${n ? `<div class="qtd"><button class="m" data-id="${i.id}" data-d="-1" aria-label="Remover">−</button><span>${n}</span><button class="p" data-id="${i.id}" data-d="1" aria-label="Adicionar">+</button></div>`
-            : `<button class="add" data-id="${i.id}" data-d="1">+ Adicionar</button>`}</div>`; }).join("")
-      : `<div class="vazio">Nenhum sabor encontrado 🍦</div>`;
+    if (!l.length) { $("#grade").innerHTML = `<div class="vazio">Nenhum sabor encontrado 🍦</div>`; return; }
+    const grupos = CATS.map(c => ({ c, it: l.filter(i => i.cat.id === c.id) })).filter(g => g.it.length);
+    $("#grade").innerHTML = grupos.map(g => `<div class="grupo"><h3>${g.c.nome}${g.c.tam ? `<small>${g.c.tam}</small>` : ""}</h3><ul class="itens-l">${
+      g.it.map(i => { const n = qtd[i.id] || 0;
+        return `<li class="${n?"sel":""}"><span class="nm">${i.sabor}${i.novo?'<span class="novo">Novo</span>':""}</span>${
+          n ? `<span class="qtd"><button class="m" data-id="${i.id}" data-d="-1" aria-label="Remover">−</button><span>${n}</span><button class="p" data-id="${i.id}" data-d="1" aria-label="Adicionar">+</button></span>`
+            : `<button class="add" data-id="${i.id}" data-d="1">+ Adicionar</button>`}</li>`; }).join("")}</ul></div>`).join("");
   }
   $("#busca").addEventListener("input", () => { if ($("#busca").value && catAtual !== "todos") { catAtual = "todos"; desenharAbas(); } desenharGrade(); });
   $("#grade").addEventListener("click", e => { const b = e.target.closest("[data-id]"); if (!b) return; mudar(b.dataset.id, +b.dataset.d); });
