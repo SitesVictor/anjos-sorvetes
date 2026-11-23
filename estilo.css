@@ -22,6 +22,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .logo img{height:46px;width:auto;display:block}
 .logo-rod{display:inline-block;background:#fff;border-radius:16px;padding:.5rem .9rem}
 .logo-rod img{height:44px;width:auto;display:block}
+.sem-foto.zero{background:linear-gradient(160deg,#5bb6cc,#1f5f72);color:#fff;gap:0;display:flex!important;flex-direction:column;align-items:center;justify-content:center}
+.sem-foto.zero b{font-family:"Baloo 2";font-size:3.4rem;line-height:1;color:var(--amarelo)}
+.sem-foto.zero span{font-family:Nunito;font-weight:900;font-size:1rem;letter-spacing:.12em;text-transform:uppercase}
 .sem-foto{display:grid;place-items:center;align-content:center;gap:.4rem;background:linear-gradient(160deg,#e8f6fa,#cbeaf2);color:var(--azulEsc);font-family:"Baloo 2";font-weight:800;font-size:1.3rem;text-align:center}
 .sem-foto img{width:64px!important;height:64px!important;object-fit:contain!important}
 .menu{margin-left:auto;display:flex;gap:.3rem;align-items:center}
@@ -43,7 +46,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .btn.az{background:var(--azul2);color:#fff;box-shadow:0 7px 0 -1px var(--azulEsc)}
 .btn.br{background:#fff;color:var(--azul2);border:2px solid #dbeef3}
 .btn.zap{background:#25d366;color:#fff;box-shadow:0 7px 0 -1px #149c47}
-.btn.cont{background:transparent;border:2px solid rgba(255,255,255,.65);color:#fff}
+.btn.cont{background:rgba(255,255,255,.16);border:2px solid #fff;color:#fff}
+.btn.cont:hover{background:#fff;color:var(--azul2)}
 .btn.mr{background:var(--marrom);color:#fff;box-shadow:0 7px 0 -1px var(--marrom2)}
 
 /* ---------- hero ---------- */
@@ -113,7 +117,8 @@ footer .logo{color:#fff}
 footer .logo small{color:var(--amarelo)}
 footer h4{font-family:"Baloo 2";font-size:1.2rem;color:#fff;margin-bottom:.5rem}
 footer p,footer li{font-weight:700;font-size:.92rem}
-footer ul{list-style:none;display:grid;gap:.35rem}
+footer ul{list-style:none;display:grid;gap:.1rem}
+footer ul a{display:inline-block;padding:.45rem 0;min-height:40px}
 footer a{text-decoration:none}
 footer a:hover{text-decoration:underline}
 footer .demo{margin-top:2rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.15);font-size:.82rem;opacity:.75}

@@ -6,6 +6,17 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Anjos — Fábrica e Empório em Anchieta</title>
 <meta name="description" content="Sorvetes, picolés, paletas e potes feitos em Anchieta (ES). Conheça nossos sabores, faça seu pedido ou seja um revendedor.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Anjos">
+<meta property="og:title" content="Anjos — Fábrica e Empório em Anchieta">
+<meta property="og:description" content="Sorvetes, picolés, paletas e potes feitos em Anchieta (ES). Conheça os sabores, faça seu pedido ou seja um revendedor.">
+<meta property="og:url" content="https://sitesvictor.github.io/anjos-sorvetes-v2/">
+<meta property="og:image" content="https://sitesvictor.github.io/anjos-sorvetes-v2/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#3b98b0">
 <link rel="icon" href="img/icone.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -33,6 +44,14 @@
   .linha h3{font-size:1.35rem;color:var(--azulEsc)}
   .linha p{font-weight:700;color:var(--suave);font-size:.88rem;margin:.2rem 0 .7rem}
   .linha span.v{font-weight:900;font-size:.85rem;color:var(--azul2);margin-top:auto}
+  @media (max-width:600px){
+    .linhas{grid-template-columns:1fr 1fr;gap:.7rem}
+    .linha .tx{padding:.7rem .8rem .8rem}
+    .linha h3{font-size:1.08rem}
+    .linha p{display:none}
+    .linha span.v{font-size:.78rem;margin-top:.3rem}
+    .sem-foto.zero b{font-size:2.4rem}
+  }
 
   /* lançamentos */
   .lanc{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2rem}
@@ -92,11 +111,11 @@
       <div class="status" id="status"><i></i><span>…</span></div>
     </div>
     <div class="mosaico">
-      <figure class="m1"><img src="img/hero-ceu.webp" alt="Picolé e casquinha Anjos"></figure>
-      <figure class="m2"><img src="img/frutados.webp" alt="Picolés frutados"></figure>
-      <figure class="m3"><img src="img/cobertura-morango.webp" alt="Picolés de cobertura"></figure>
-      <figure class="m4"><img src="img/potes.webp" alt="Pote de sorvete"></figure>
-      <span class="selo-flut" id="seloSab">+80 sabores</span>
+      <figure class="m1"><img src="img/md/hero-ceu.webp" alt="Picolé e casquinha Anjos"></figure>
+      <figure class="m2"><img src="img/sm/frutados.webp" alt="Picolés frutados"></figure>
+      <figure class="m3"><img src="img/sm/cobertura-morango.webp" alt="Picolés de cobertura"></figure>
+      <figure class="m4"><img src="img/sm/potes.webp" alt="Pote de sorvete"></figure>
+      <span class="selo-flut" id="seloSab">60+ sabores</span>
     </div>
   </div>
   <svg class="onda" viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="currentColor" d="M0 30c120 20 240 30 360 22S600 10 720 12s240 30 360 34 240-10 360-24v38H0z"/></svg>
@@ -104,7 +123,7 @@
 
 <div class="wrap">
   <div class="numeros">
-    <div><b id="nSab">80+</b><span>sabores</span></div>
+    <div><b id="nSab">60+</b><span>sabores diferentes</span></div>
     <div><b>10</b><span>linhas de produtos</span></div>
     <div><b>0%</b><span>açúcar na linha Zero</span></div>
     <div><b>ES</b><span>feito em Anchieta</span></div>
@@ -128,10 +147,10 @@
     <h2 class="tt">Acabou de sair da fábrica</h2>
     <p class="sub">Os sabores mais recentes da Anjos. Peça no Empório ou procure na sua sorveteria favorita.</p>
     <div class="lanc">
-      <figure class="rv"><img src="img/brigadeiro.webp" alt="Picolé de brigadeiro" loading="lazy"><figcaption><h3>Brigadeiro</h3><p>Picolé de cobertura com chocolate e granulado.</p></figcaption></figure>
-      <figure class="rv"><img src="img/delirio.webp" alt="Picolé Delírio" loading="lazy"><figcaption><h3>Delírio</h3><p>Cremosidade e chocolate de repetir.</p></figcaption></figure>
-      <figure class="rv"><img src="img/pistache.webp" alt="Picolé de pistache" loading="lazy"><figcaption><h3>Pistache</h3><p>Cremoso, marcante e irresistível.</p></figcaption></figure>
-      <figure class="rv"><img src="img/paleta-avela.webp" alt="Paleta de avelã" loading="lazy"><figcaption><h3>Paleta de Avelã</h3><p>Intensa, com toque de avelã e chocolate.</p></figcaption></figure>
+      <figure class="rv"><img src="img/sm/brigadeiro.webp" alt="Picolé de brigadeiro" loading="lazy"><figcaption><h3>Brigadeiro</h3><p>Picolé de cobertura com chocolate e granulado.</p></figcaption></figure>
+      <figure class="rv"><img src="img/sm/delirio.webp" alt="Picolé Delírio" loading="lazy"><figcaption><h3>Delírio</h3><p>Cremosidade e chocolate de repetir.</p></figcaption></figure>
+      <figure class="rv"><img src="img/sm/pistache.webp" alt="Picolé de pistache" loading="lazy"><figcaption><h3>Pistache</h3><p>Cremoso, marcante e irresistível.</p></figcaption></figure>
+      <figure class="rv"><img src="img/sm/paleta-avela.webp" alt="Paleta de avelã" loading="lazy"><figcaption><h3>Paleta de Avelã</h3><p>Intensa, com toque de avelã e chocolate.</p></figcaption></figure>
     </div>
   </div>
 </section>
@@ -139,9 +158,9 @@
 <section class="bl">
   <div class="wrap sobre">
     <div class="fotos rv">
-      <img src="img/fachada.webp" alt="Fachada da Anjos" loading="lazy">
-      <img src="img/fabrica.webp" alt="Produção na fábrica" loading="lazy">
-      <img src="img/equipe.webp" alt="Equipe Anjos" loading="lazy" style="object-position:center 20%">
+      <img src="img/md/fachada.webp" alt="Fachada da Anjos" loading="lazy">
+      <img src="img/sm/fabrica.webp" alt="Produção na fábrica" loading="lazy">
+      <img src="img/sm/equipe.webp" alt="Equipe Anjos" loading="lazy" style="object-position:center 20%">
     </div>
     <div>
       <span class="tag">Quem somos</span>
@@ -173,9 +192,9 @@
   <div class="wrap">
     <div class="faixa rv">
       <div class="tx"><h2>Tem um comércio? Venda Anjos!</h2>
-      <p>Sorveterias, lanchonetes, mercados e quiosques: leve mais de 80 sabores para os seus clientes, direto da fábrica.</p>
+      <p>Sorveterias, lanchonetes, mercados e quiosques: leve a linha completa Anjos para os seus clientes, direto da fábrica.</p>
       <a class="btn am" href="revenda.html">Quero ser revendedor</a></div>
-      <img src="img/cones.webp" alt="Cones Anjos" loading="lazy">
+      <img src="img/sm/cones.webp" alt="Cones Anjos" loading="lazy">
     </div>
   </div>
 </section>
@@ -188,12 +207,12 @@
       <a class="btn br" href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener">Seguir no Instagram</a>
     </div>
     <div class="galeria">
-      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/menino.webp" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/cliente-cone.webp" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/leite.webp" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/clientes-cones.webp" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/sundae.webp" alt="" loading="lazy"></a>
-      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/frutados-morango.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/sm/menino.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/sm/cliente-cone.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/sm/leite.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/sm/clientes-cones.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/sm/sundae.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/sm/frutados-morango.webp" alt="" loading="lazy"></a>
     </div>
   </div>
 </section>
@@ -213,8 +232,9 @@
       </div>
       <div class="card">
         <h3>📍 Como chegar</h3>
-        <div class="mapa"><iframe loading="lazy" title="Mapa" src="https://maps.google.com/maps?q=Baixo%20Pongal%2C%20Anchieta%20-%20ES&z=14&output=embed"></iframe></div>
+        <div class="mapa"><iframe loading="lazy" title="Mapa" src="https://maps.google.com/maps?q=Anjos%20Sorvetes%2C%20Baixo%20Pongal%2C%20Anchieta%20-%20ES&z=15&output=embed"></iframe></div>
         <div class="ctas" style="margin-top:1rem">
+          <a class="btn az" href="https://www.google.com/maps/dir/?api=1&destination=Anjos%20Sorvetes%2C%20Baixo%20Pongal%2C%20Anchieta%20-%20ES" target="_blank" rel="noopener">📍 Abrir no Google Maps</a>
           <a class="btn zap" id="zapContato" target="_blank" rel="noopener">WhatsApp</a>
           <a class="btn br" href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener">@anjossorvetes</a>
         </div>
@@ -230,7 +250,7 @@
     <div class="tx"><h3>${c.nome}</h3><p>${c.desc}</p>
     <span class="v">${c.id === "copinho" ? "Ver opções" : c.s.length + " sabores"} →</span></div></a>`).join("");
   montarLayout("inicio");
-  $("#nSab").textContent = TOTAL_SABORES; $("#seloSab").textContent = TOTAL_SABORES + " sabores 🍦";
+  $("#nSab").textContent = SABORES_UNICOS; $("#seloSab").textContent = SABORES_UNICOS + " sabores 🍦";
   $("#zapContato").href = zap("Olá, Anjos! 🍦 Vim pelo site.");
   desenharStatus("#status"); desenharHorarios("#horEmporio");
   setInterval(() => desenharStatus("#status"), 60000);

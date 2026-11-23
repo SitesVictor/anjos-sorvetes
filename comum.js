@@ -1,6 +1,9 @@
 // ================== CONFIGURAÇÃO ==================
 const WHATSAPP = "5528999682200";
 // Horários do Empório: dia da semana (0 = domingo) -> [abre, fecha]
+// Feriados (o Empório segue o horário de domingo nesses dias). Formato AAAA-MM-DD.
+const FERIADOS = ["2026-01-01","2026-04-03","2026-04-21","2026-05-01","2026-09-07","2026-10-12","2026-11-02","2026-11-15","2026-11-20","2026-12-25",
+  "2027-01-01","2027-03-26","2027-04-21","2027-05-01","2027-09-07","2027-10-12","2027-11-02","2027-11-15","2027-11-20","2027-12-25"];
 const HORARIO = { 0:["13:00","18:00"], 1:["09:00","18:00"], 2:["09:00","18:00"], 3:["09:00","18:00"], 4:["09:00","18:00"], 5:["09:00","18:00"], 6:["09:00","18:00"] };
 
 // ================== CATÁLOGO ==================
@@ -21,12 +24,13 @@ const CATS = [
     s:["Ninho Trufado","Ovomaltine","Kinder Bueno","Coco com Nutella","Iogurte Grego com Frutas Vermelhas","Bombom com Nutella","Morango com Leite Condensado","Avelã*"] },
   { id:"cones", foto:"img/cones.webp", nome:"Cones", forma:"cone", cor:"#8a5a3f", desc:"Casquinha crocante com cobertura.", s:["Chocolate","Morango","Ovomaltine"] },
   { id:"sundae", foto:"img/sundae.webp", nome:"Sundae", forma:"sundae", cor:"#ef6b7c", desc:"Copo com sorvete e calda, cremosidade 5 estrelas.", s:["Morango","Chocolate","Maracujá","Limão","Uva","Ninho Trufado"] },
-  { id:"copinho", foto:"img/copinho.webp", nome:"Copinho", forma:"copo", cor:"#5bb6cc", desc:"Copinhos individuais, ótimos para festas e lanches.", s:["Consulte os sabores"] },
+  { id:"copinho", foto:"img/copinho.webp", nome:"Copinho", forma:"copo", cor:"#5bb6cc", desc:"Copinhos individuais, ótimos para festas e lanches.", s:["Sabor a combinar"] },
 ];
 
 const ITENS = [];
 CATS.forEach(c => c.s.forEach(n => { const novo = n.endsWith("*"); const sabor = n.replace("*",""); ITENS.push({ id: c.id + "|" + sabor, cat: c, sabor, novo }); }));
 const TOTAL_SABORES = ITENS.filter(i => i.cat.id !== "copinho").length;
+const SABORES_UNICOS = new Set(ITENS.filter(i => i.cat.id !== "copinho").map(i => i.sabor.toLowerCase())).size;
 
 // cor principal por sabor
 const CORES = [
@@ -100,12 +104,16 @@ function montarLayout(pagina) {
 // horário do empório
 const DIAS = ["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
 const fmtH = h => h.replace(/^0/,"").replace(":00","h").replace(":","h");
+const ymdLocal = d => d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+const ehFeriado = d => FERIADOS.includes(ymdLocal(d));
+const horarioDo = d => ehFeriado(d) ? HORARIO[0] : HORARIO[d.getDay()];
 function statusEmporio() {
-  const d = new Date(), h = HORARIO[d.getDay()], min = d.getHours()*60 + d.getMinutes();
+  const d = new Date(), h = horarioDo(d), min = d.getHours()*60 + d.getMinutes();
   const m = s => { const [a,b] = s.split(":").map(Number); return a*60+b; };
   if (h && min >= m(h[0]) && min < m(h[1])) return { aberto:true, txt:`Empório aberto agora · até ${fmtH(h[1])}` };
   if (h && min < m(h[0])) return { aberto:false, txt:`Empório fechado · abre hoje às ${fmtH(h[0])}` };
-  for (let k = 1; k <= 7; k++) { const dia = (d.getDay()+k) % 7; if (HORARIO[dia]) return { aberto:false, txt:`Empório fechado · abre ${k===1?"amanhã":DIAS[dia]} às ${fmtH(HORARIO[dia][0])}` }; }
+  for (let k = 1; k <= 7; k++) { const dd = new Date(d.getFullYear(), d.getMonth(), d.getDate()+k), hh = horarioDo(dd);
+    if (hh) return { aberto:false, txt:`Empório fechado · abre ${k===1?"amanhã":DIAS[dd.getDay()]} às ${fmtH(hh[0])}` }; }
   return { aberto:false, txt:"Empório fechado" };
 }
 function desenharStatus(sel) {
@@ -113,13 +121,13 @@ function desenharStatus(sel) {
   const s = statusEmporio(); el.classList.toggle("fech", !s.aberto); el.querySelector("span").textContent = s.txt;
 }
 function desenharHorarios(sel) {
-  const el = $(sel); if (!el) return; const dia = new Date().getDay();
-  el.innerHTML = [["Segunda a sábado","9h às 18h",dia>=1],["Domingos e feriados","13h às 18h",dia===0]]
+  const el = $(sel); if (!el) return; const hoje = new Date(), dia = hoje.getDay(), fer = ehFeriado(hoje);
+  el.innerHTML = [["Segunda a sábado","9h às 18h",dia>=1 && !fer],["Domingos e feriados","13h às 18h",dia===0 || fer]]
     .map(([a,b,hj]) => `<li class="${hj?"hoje":""}"><span>${a}${hj?" (hoje)":""}</span><span>${b}</span></li>`).join("");
 }
 function fotoCat(c, cls="") {
-  return c.foto ? `<img class="${cls}" src="${c.foto}" alt="${c.nome}" loading="lazy">`
-               : `<div class="${cls} sem-foto"><img src="img/icone.png" alt=""><span>${c.nome}</span></div>`;
+  if (c.foto) return `<img class="${cls}" src="${c.foto.replace("img/","img/sm/")}" alt="${c.nome}" loading="lazy">`;
+  return `<div class="${cls} sem-foto zero" role="img" aria-label="${c.nome}"><b>0%</b><span>açúcar</span></div>`;
 }
 function arteHero(sel, itens) {
   const el = $(sel); if (!el) return;
