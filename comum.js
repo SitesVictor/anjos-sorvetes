@@ -6,22 +6,22 @@ const HORARIO = { 0:["13:00","18:00"], 1:["09:00","18:00"], 2:["09:00","18:00"],
 // ================== CATÁLOGO ==================
 // Sabores com * aparecem com o selo "Novo"
 const CATS = [
-  { id:"potes", nome:"Potes", forma:"pote", cor:"#f28aa8", desc:"Potes de 1/2 litro e 1 litro, para levar para casa.", tam:"1/2 L e 1 L",
+  { id:"potes", foto:"img/potes.webp", nome:"Potes", forma:"pote", cor:"#f28aa8", desc:"Potes de 1/2 litro e 1 litro, para levar para casa.", tam:"1/2 L e 1 L",
     s:["Abacaxi","Banana","Bombom","Brigadeiro","Chocolate","Chokito","Coco","Creme","Flocos","Frutas do Bosque","Iogurte Grego","Kinder Ovo","Malt Ovo","Morango","Napolitano","Ninho Trufado","Ouro Branco","Pavê","Prestígio","Sonho de Valsa","Tentação","Torta de Limão"] },
-  { id:"cobertura", nome:"Picolé de cobertura", forma:"cob", cor:"#f8c21d", desc:"Picolés com casquinha crocante de chocolate.",
+  { id:"cobertura", foto:"img/cobertura.webp", nome:"Picolé de cobertura", forma:"cob", cor:"#f8c21d", desc:"Picolés com casquinha crocante de chocolate.",
     s:["Bombom","Brigadeiro*","Crocante","Maltovo","Tentação","Skimo","Skimo Coco","Skimo Branco","Pé de Moleque","Torta de Limão","Chokiss","Suflê de Morango","Delírio*"] },
-  { id:"recheados", nome:"Picolé recheado", forma:"rech", cor:"#9bd47a", desc:"Cremosos por fora, recheados por dentro.",
+  { id:"recheados", foto:"img/recheados.webp", nome:"Picolé recheado", forma:"rech", cor:"#9bd47a", desc:"Cremosos por fora, recheados por dentro.",
     s:["Abacaxi Suíço","Limão Suíço","Mousse de Maracujá","Romeu e Julieta","Chocomenta","Tapioca com Doce de Leite","Ninho Trufado"] },
-  { id:"leite", nome:"Picolé ao leite", forma:"pic", cor:"#f7d54a", desc:"Os clássicos cremosos de todo dia.",
+  { id:"leite", foto:"img/leite.webp", nome:"Picolé ao leite", forma:"pic", cor:"#f7d54a", desc:"Os clássicos cremosos de todo dia.",
     s:["Milho Verde","Biscoito","Abacate","Amendoim","Banana","Chiclete","Chocolate","Coco","Jaca","Abacaxi com Coco","Morango","Flocos","Graviola","Leite Condensado","Mini Saia","Pistache*"] },
-  { id:"frutados", nome:"Picolé frutado", forma:"fruta", cor:"#8d5bb5", desc:"Feitos com fruta, leves e refrescantes.",
+  { id:"frutados", foto:"img/frutados.webp", nome:"Picolé frutado", forma:"fruta", cor:"#8d5bb5", desc:"Feitos com fruta, leves e refrescantes.",
     s:["Abacaxi","Uva","Goiaba","Açaí","Limão","Jabuticaba","Manga","Tangerina"] },
-  { id:"zero", nome:"Zero açúcar", forma:"pic", cor:"#fbf3e2", desc:"Todo o sabor, sem adição de açúcar.", s:["Coco","Chocolate"] },
-  { id:"paletas", nome:"Paletas", forma:"paleta", cor:"#f28aa8", desc:"Paletas mexicanas recheadas e generosas.",
+  { id:"zero", foto:"", nome:"Zero açúcar", forma:"pic", cor:"#fbf3e2", desc:"Todo o sabor, sem adição de açúcar.", s:["Coco","Chocolate"] },
+  { id:"paletas", foto:"img/paleta-avela.webp", nome:"Paletas", forma:"paleta", cor:"#f28aa8", desc:"Paletas mexicanas recheadas e generosas.",
     s:["Ninho Trufado","Ovomaltine","Kinder Bueno","Coco com Nutella","Iogurte Grego com Frutas Vermelhas","Bombom com Nutella","Morango com Leite Condensado","Avelã*"] },
-  { id:"cones", nome:"Cones", forma:"cone", cor:"#8a5a3f", desc:"Casquinha crocante com cobertura.", s:["Chocolate","Morango","Ovomaltine"] },
-  { id:"sundae", nome:"Sundae", forma:"sundae", cor:"#ef6b7c", desc:"Copo com sorvete e calda, cremosidade 5 estrelas.", s:["Morango","Chocolate","Maracujá","Limão","Uva","Ninho Trufado"] },
-  { id:"copinho", nome:"Copinho", forma:"copo", cor:"#5bb6cc", desc:"Copinhos individuais, ótimos para festas e lanches.", s:["Consulte os sabores"] },
+  { id:"cones", foto:"img/cones.webp", nome:"Cones", forma:"cone", cor:"#8a5a3f", desc:"Casquinha crocante com cobertura.", s:["Chocolate","Morango","Ovomaltine"] },
+  { id:"sundae", foto:"img/sundae.webp", nome:"Sundae", forma:"sundae", cor:"#ef6b7c", desc:"Copo com sorvete e calda, cremosidade 5 estrelas.", s:["Morango","Chocolate","Maracujá","Limão","Uva","Ninho Trufado"] },
+  { id:"copinho", foto:"img/copinho.webp", nome:"Copinho", forma:"copo", cor:"#5bb6cc", desc:"Copinhos individuais, ótimos para festas e lanches.", s:["Consulte os sabores"] },
 ];
 
 const ITENS = [];
@@ -70,7 +70,7 @@ const ZAP_SVG = `<svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3
 function montarLayout(pagina) {
   const topo = document.createElement("header"); topo.className = "topo";
   topo.innerHTML = `<div class="wrap">
-    <a class="logo" href="index.html" aria-label="Anjos Sorvetes, início">${LOGO()}<span>Anjos<small>SORVETES</small></span></a>
+    <a class="logo" href="index.html" aria-label="Anjos Sorvetes, início"><img src="img/logo-h.webp" alt="Anjos Sorvetes" width="139" height="48"></a>
     <nav class="menu">
       <a href="index.html" class="so-pc ${pagina==="inicio"?"on":""}">Início</a>
       <a href="pedidos.html" class="${pagina==="pedidos"?"on":""}">Pedidos</a>
@@ -80,7 +80,7 @@ function montarLayout(pagina) {
 
   const rod = document.createElement("footer");
   rod.innerHTML = `<div class="wrap"><div class="cols">
-    <div><a class="logo" href="index.html">${LOGO("#9fdbea","#c98f6c","#1f5f72")}<span>Anjos<small>SORVETES</small></span></a>
+    <div><a class="logo-rod" href="index.html"><img src="img/logo-h.webp" alt="Anjos Sorvetes" width="174" height="60"></a>
       <p style="margin-top:.8rem">Sorvetes, picolés e paletas produzidos em Anchieta (ES).</p></div>
     <div><h4>Navegue</h4><ul><li><a href="index.html">Início</a></li><li><a href="pedidos.html">Fazer pedido</a></li><li><a href="revenda.html">Seja revendedor</a></li><li><a href="index.html#visite">Horários e endereço</a></li></ul></div>
     <div><h4>Contato</h4><ul><li><a href="${zap("Olá, Anjos! 🍦 Vim pelo site.")}" target="_blank" rel="noopener">WhatsApp (28) 99968-2200</a></li><li><a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener">Instagram @anjossorvetes</a></li><li>Rua Projetada, s/n — Baixo Pongal, Anchieta (ES)</li></ul></div>
@@ -116,6 +116,10 @@ function desenharHorarios(sel) {
   const el = $(sel); if (!el) return; const dia = new Date().getDay();
   el.innerHTML = [["Segunda a sábado","9h às 18h",dia>=1],["Domingos e feriados","13h às 18h",dia===0]]
     .map(([a,b,hj]) => `<li class="${hj?"hoje":""}"><span>${a}${hj?" (hoje)":""}</span><span>${b}</span></li>`).join("");
+}
+function fotoCat(c, cls="") {
+  return c.foto ? `<img class="${cls}" src="${c.foto}" alt="${c.nome}" loading="lazy">`
+               : `<div class="${cls} sem-foto"><img src="img/icone.png" alt=""><span>${c.nome}</span></div>`;
 }
 function arteHero(sel, itens) {
   const el = $(sel); if (!el) return;

@@ -6,42 +6,61 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Anjos Sorvetes — Fábrica e Empório em Anchieta</title>
 <meta name="description" content="Sorvetes, picolés, paletas e potes feitos em Anchieta (ES). Conheça nossos sabores, faça seu pedido ou seja um revendedor.">
+<link rel="icon" href="img/icone.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="estilo.css">
 <style>
-  .linhas{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:2rem}
-  .linha{display:flex;flex-direction:column;align-items:center;text-align:center;text-decoration:none;background:#fff;border-radius:var(--raio);padding:1.3rem 1rem 1.1rem;box-shadow:var(--sombra);transition:transform .2s;position:relative;overflow:hidden}
-  .linha::before{content:"";position:absolute;left:50%;top:-40px;width:170px;height:170px;transform:translateX(-50%);border-radius:50%;background:var(--bg,#e8f6fa);opacity:.7}
-  .linha:hover{transform:translateY(-4px)}
-  .linha .ilu{position:relative;height:110px;display:grid;place-items:center}
-  .linha .ilu svg{height:104px;width:auto}
-  .linha h3{position:relative;font-size:1.35rem;color:var(--azulEsc);margin-top:.6rem}
-  .linha p{position:relative;font-weight:700;color:var(--suave);font-size:.88rem;margin:.2rem 0 .7rem}
-  .linha span.v{position:relative;font-weight:900;font-size:.85rem;color:var(--azul2);margin-top:auto}
+  /* hero com fotos */
+  .mosaico{position:relative;height:500px}
+  .mosaico figure{position:absolute;border-radius:26px;overflow:hidden;box-shadow:0 24px 40px -18px rgba(0,0,0,.45);border:5px solid #fff;background:#fff}
+  .mosaico img{width:100%;height:100%;object-fit:cover;display:block}
+  .mosaico .m1{left:18%;top:0;width:52%;height:88%;z-index:2}
+  .mosaico .m2{left:0;bottom:4%;width:36%;height:46%;transform:rotate(-5deg);z-index:3}
+  .mosaico .m3{right:0;top:12%;width:34%;height:42%;transform:rotate(5deg);z-index:1}
+  .mosaico .m4{right:4%;bottom:0;width:30%;height:36%;transform:rotate(-3deg);z-index:3}
+  .mosaico .selo-flut{position:absolute;left:58%;bottom:10%;z-index:4;background:var(--amarelo);color:var(--marrom2);font-weight:900;padding:.6rem 1rem;border-radius:14px;box-shadow:0 10px 20px -8px rgba(0,0,0,.35);transform:rotate(-4deg);font-size:.95rem}
+  @media (max-width:860px){ .mosaico{height:380px;max-width:460px;width:100%;margin:0 auto;order:-1} }
 
-  .lanc{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
-  .lanc>div{background:linear-gradient(160deg,#fff 0%,#fff6dd 100%);border-radius:var(--raio);padding:1.3rem 1rem;text-align:center;box-shadow:var(--sombra);position:relative}
-  .lanc>div::after{content:"Novo";position:absolute;top:.8rem;right:.8rem;background:var(--amarelo);color:var(--marrom2);font-weight:900;font-size:.72rem;padding:.15rem .55rem;border-radius:999px}
-  .lanc svg{height:120px;width:auto;margin:0 auto .6rem;display:block}
+  /* linhas */
+  .linhas{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.1rem;margin-top:2rem}
+  .linha{display:flex;flex-direction:column;text-decoration:none;background:#fff;border-radius:var(--raio);overflow:hidden;box-shadow:var(--sombra);transition:transform .2s}
+  .linha:hover{transform:translateY(-4px)}
+  .linha .ft{aspect-ratio:4/3;width:100%;object-fit:cover;display:block;transition:transform .5s}
+  .linha:hover .ft{transform:scale(1.05)}
+  .linha .ft-wrap{overflow:hidden}
+  .linha .tx{padding:1rem 1.1rem 1.1rem;display:flex;flex-direction:column;flex:1}
+  .linha h3{font-size:1.35rem;color:var(--azulEsc)}
+  .linha p{font-weight:700;color:var(--suave);font-size:.88rem;margin:.2rem 0 .7rem}
+  .linha span.v{font-weight:900;font-size:.85rem;color:var(--azul2);margin-top:auto}
+
+  /* lançamentos */
+  .lanc{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2rem}
+  .lanc figure{background:#fff;border-radius:var(--raio);overflow:hidden;box-shadow:var(--sombra);position:relative}
+  .lanc img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+  .lanc figcaption{padding:.9rem 1rem 1.1rem}
   .lanc h3{font-size:1.35rem;color:var(--marrom2)}
   .lanc p{font-weight:700;color:var(--suave);font-size:.9rem}
+  .lanc figure::after{content:"Novo";position:absolute;top:.8rem;left:.8rem;background:var(--amarelo);color:var(--marrom2);font-weight:900;font-size:.75rem;padding:.2rem .6rem;border-radius:999px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
   @media (max-width:860px){.lanc{grid-template-columns:repeat(2,1fr)}}
 
-  .sobre{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
-  .sobre .fotos{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-bottom:28px}
-  .sobre .fotos div{border-radius:24px;padding:1.4rem;display:grid;place-items:center;min-height:180px;box-shadow:var(--sombra)}
-  .sobre .fotos div:nth-child(1){background:var(--azul)}
-  .sobre .fotos div:nth-child(2){background:var(--amarelo);transform:translateY(28px)}
-  .sobre .fotos div:nth-child(3){background:#f6a8bf}
-  .sobre .fotos div:nth-child(4){background:var(--marrom);transform:translateY(28px)}
-  .sobre .fotos svg{height:120px;width:auto;filter:drop-shadow(0 10px 12px rgba(0,0,0,.18))}
+  /* sobre */
+  .sobre{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .fotos{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:200px 200px;gap:1rem}
+  .fotos img{width:100%;height:100%;object-fit:cover;border-radius:22px;box-shadow:var(--sombra);display:block}
+  .fotos img:first-child{grid-column:1/-1}
   .pontos{list-style:none;display:grid;gap:.9rem;margin-top:1.4rem}
   .pontos li{display:flex;gap:.9rem;align-items:flex-start}
   .pontos li span{flex:none;width:2.6rem;height:2.6rem;border-radius:14px;background:var(--ceu);display:grid;place-items:center;font-size:1.3rem}
   .pontos b{display:block;color:var(--azulEsc);font-size:1.05rem}
   .pontos p{color:var(--suave);font-weight:700;font-size:.95rem}
-  @media (max-width:860px){.sobre{grid-template-columns:1fr}}
+  @media (max-width:860px){.sobre{grid-template-columns:1fr}.fotos{grid-template-rows:180px 160px}}
+
+  /* galeria */
+  .galeria{display:grid;grid-template-columns:repeat(6,1fr);gap:.8rem;margin-top:2rem}
+  .galeria img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px;display:block;transition:transform .3s}
+  .galeria a:hover img{transform:scale(1.03)}
+  @media (max-width:860px){.galeria{grid-template-columns:repeat(3,1fr)}}
 
   .passos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.4rem;counter-reset:p}
   .passos div{counter-increment:p;background:var(--creme);border-radius:var(--raio);padding:1.6rem 1.4rem;box-shadow:var(--sombra);position:relative}
@@ -50,12 +69,12 @@
   .passos p{color:var(--suave);font-weight:700}
   @media (max-width:860px){.passos{grid-template-columns:1fr;gap:1.8rem}}
 
-  .faixa{background:linear-gradient(135deg,var(--marrom) 0%,var(--marrom2) 100%);border-radius:32px;color:#fff;padding:2.6rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;position:relative;overflow:hidden;box-shadow:var(--sombra)}
-  .faixa::after{content:"";position:absolute;right:-50px;top:-70px;width:240px;height:240px;border-radius:50%;background:rgba(248,194,29,.18)}
-  .faixa h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:.4rem}
-  .faixa p{font-weight:700;opacity:.92;max-width:38rem}
-  .faixa .btn{position:relative;z-index:1}
-  @media (max-width:760px){.faixa{grid-template-columns:1fr;padding:2rem 1.4rem}}
+  .faixa{border-radius:32px;color:#fff;display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden;box-shadow:var(--sombra);background:linear-gradient(135deg,var(--marrom) 0%,var(--marrom2) 100%)}
+  .faixa .tx{padding:2.6rem}
+  .faixa h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:.5rem}
+  .faixa p{font-weight:700;opacity:.92;margin-bottom:1.4rem}
+  .faixa img{width:100%;height:100%;max-height:340px;object-fit:cover;object-position:center 35%;display:block;min-height:260px}
+  @media (max-width:760px){.faixa{grid-template-columns:1fr}.faixa .tx{padding:2rem 1.4rem}}
 </style>
 </head>
 <body>
@@ -72,7 +91,13 @@
       </div>
       <div class="status" id="status"><i></i><span>…</span></div>
     </div>
-    <div class="hero-arte" id="heroArte"></div>
+    <div class="mosaico">
+      <figure class="m1"><img src="img/hero-ceu.webp" alt="Picolé e casquinha Anjos"></figure>
+      <figure class="m2"><img src="img/frutados.webp" alt="Picolés frutados"></figure>
+      <figure class="m3"><img src="img/cobertura-morango.webp" alt="Picolés de cobertura"></figure>
+      <figure class="m4"><img src="img/potes.webp" alt="Pote de sorvete"></figure>
+      <span class="selo-flut" id="seloSab">+80 sabores</span>
+    </div>
   </div>
   <svg class="onda" viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="currentColor" d="M0 30c120 20 240 30 360 22S600 10 720 12s240 30 360 34 240-10 360-24v38H0z"/></svg>
 </section>
@@ -103,23 +128,27 @@
     <h2 class="tt">Acabou de sair da fábrica</h2>
     <p class="sub">Os sabores mais recentes da Anjos. Peça no Empório ou procure na sua sorveteria favorita.</p>
     <div class="lanc">
-      <div class="rv"><span id="l1"></span><h3>Brigadeiro</h3><p>Picolé de cobertura com chocolate e granulado.</p></div>
-      <div class="rv"><span id="l2"></span><h3>Delírio</h3><p>Cremosidade e chocolate de repetir.</p></div>
-      <div class="rv"><span id="l3"></span><h3>Pistache</h3><p>Cremoso, marcante e irresistível.</p></div>
-      <div class="rv"><span id="l4"></span><h3>Paleta de Avelã</h3><p>Intensa, com toque de avelã e chocolate.</p></div>
+      <figure class="rv"><img src="img/brigadeiro.webp" alt="Picolé de brigadeiro" loading="lazy"><figcaption><h3>Brigadeiro</h3><p>Picolé de cobertura com chocolate e granulado.</p></figcaption></figure>
+      <figure class="rv"><img src="img/delirio.webp" alt="Picolé Delírio" loading="lazy"><figcaption><h3>Delírio</h3><p>Cremosidade e chocolate de repetir.</p></figcaption></figure>
+      <figure class="rv"><img src="img/pistache.webp" alt="Picolé de pistache" loading="lazy"><figcaption><h3>Pistache</h3><p>Cremoso, marcante e irresistível.</p></figcaption></figure>
+      <figure class="rv"><img src="img/paleta-avela.webp" alt="Paleta de avelã" loading="lazy"><figcaption><h3>Paleta de Avelã</h3><p>Intensa, com toque de avelã e chocolate.</p></figcaption></figure>
     </div>
   </div>
 </section>
 
 <section class="bl">
   <div class="wrap sobre">
-    <div class="fotos rv" id="sobreArte"><div></div><div></div><div></div><div></div></div>
+    <div class="fotos rv">
+      <img src="img/fachada.webp" alt="Fachada da Anjos Sorvetes" loading="lazy">
+      <img src="img/fabrica.webp" alt="Produção na fábrica" loading="lazy">
+      <img src="img/equipe.webp" alt="Equipe Anjos" loading="lazy" style="object-position:center 20%">
+    </div>
     <div>
       <span class="tag">Quem somos</span>
       <h2 class="tt">Da nossa fábrica para a sua mão</h2>
       <p class="sub">A Anjos Sorvetes produz em Anchieta e leva seus sorvetes para sorveterias, lanchonetes e quiosques da região. No nosso Empório, você encontra a linha completa.</p>
       <ul class="pontos">
-        <li class="rv"><span>🏭</span><div><b>Produção própria</b><p>Tudo feito na fábrica do Baixo Pongal.</p></div></li>
+        <li class="rv"><span>🏭</span><div><b>Produção própria</b><p>Tudo feito na fábrica do Baixo Pongal, com equipe dedicada.</p></div></li>
         <li class="rv"><span>🛒</span><div><b>Empório aberto todos os dias</b><p>Segunda a sábado e também domingos e feriados à tarde.</p></div></li>
         <li class="rv"><span>🤝</span><div><b>Parceiros pela região</b><p>Encontre Anjos nas sorveterias parceiras ou leve para o seu comércio.</p></div></li>
       </ul>
@@ -143,14 +172,33 @@
 <section class="bl">
   <div class="wrap">
     <div class="faixa rv">
-      <div><h2>Tem um comércio? Venda Anjos!</h2>
-      <p>Sorveterias, lanchonetes, mercados e quiosques: leve mais de 80 sabores para os seus clientes, direto da fábrica.</p></div>
-      <a class="btn am" href="revenda.html">Quero ser revendedor</a>
+      <div class="tx"><h2>Tem um comércio? Venda Anjos!</h2>
+      <p>Sorveterias, lanchonetes, mercados e quiosques: leve mais de 80 sabores para os seus clientes, direto da fábrica.</p>
+      <a class="btn am" href="revenda.html">Quero ser revendedor</a></div>
+      <img src="img/cones.webp" alt="Cones Anjos" loading="lazy">
     </div>
   </div>
 </section>
 
-<section class="bl" id="visite" style="padding-top:1rem">
+<section class="bl claro">
+  <div class="wrap">
+    <div class="topo-sec">
+      <div><span class="tag">@anjossorvetes</span><h2 class="tt">Momentos Anjos</h2>
+      <p class="sub">Acompanhe as novidades e lançamentos no nosso Instagram.</p></div>
+      <a class="btn br" href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener">Seguir no Instagram</a>
+    </div>
+    <div class="galeria">
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/menino.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/cliente-cone.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/leite.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/clientes-cones.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/sundae.webp" alt="" loading="lazy"></a>
+      <a href="https://www.instagram.com/anjossorvetes/" target="_blank" rel="noopener"><img src="img/frutados-morango.webp" alt="" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<section class="bl" id="visite">
   <div class="wrap">
     <span class="tag">Visite a gente</span>
     <h2 class="tt">Empório e fábrica</h2>
@@ -177,29 +225,15 @@
 
 <script src="comum.js"></script>
 <script>
-  const BG = { potes:"#fde3ec", cobertura:"#fff1c7", recheados:"#e3f5d6", leite:"#fff4c4", frutados:"#efe3f8", zero:"#e8f6fa", paletas:"#fde3ec", cones:"#f3e3d8", sundae:"#fde3e6", copinho:"#e8f6fa" };
-  const COR_LINHA = { potes:"#f28aa8", cobertura:"#f8c21d", recheados:"#9bd47a", leite:"#f7d54a", frutados:"#8d5bb5", zero:"#8a5a3f", paletas:"#f28aa8", cones:"#8a5a3f", sundae:"#ef6b7c", copinho:"#5bb6cc" };
-  $("#linhas").innerHTML = CATS.map(c => `<a class="linha rv" href="pedidos.html?cat=${c.id}" style="--bg:${BG[c.id]}">
-    <div class="ilu">${arte(c.forma, COR_LINHA[c.id])}</div>
-    <h3>${c.nome}</h3><p>${c.desc}</p>
-    <span class="v">${c.id === "copinho" ? "Ver opções" : c.s.length + " sabores"} →</span></a>`).join("");
-  $("#l1").innerHTML = arte("cob","#8a5a3f"); $("#l2").innerHTML = arte("cob","#f8c21d");
-  $("#l3").innerHTML = arte("pic","#9bd47a"); $("#l4").innerHTML = arte("paleta","#f2a141");
-  const sa = document.querySelectorAll("#sobreArte div");
-  [["cone","#f28aa8"],["fruta","#8d5bb5"],["pote","#8a5a3f"],["sundae","#f8c21d"]].forEach(([f,c],i) => sa[i].innerHTML = arte(f,c));
-
+  $("#linhas").innerHTML = CATS.map(c => `<a class="linha rv" href="pedidos.html?cat=${c.id}">
+    <div class="ft-wrap">${fotoCat(c, "ft")}</div>
+    <div class="tx"><h3>${c.nome}</h3><p>${c.desc}</p>
+    <span class="v">${c.id === "copinho" ? "Ver opções" : c.s.length + " sabores"} →</span></div></a>`).join("");
   montarLayout("inicio");
-  $("#nSab").textContent = TOTAL_SABORES;
+  $("#nSab").textContent = TOTAL_SABORES; $("#seloSab").textContent = TOTAL_SABORES + " sabores 🍦";
   $("#zapContato").href = zap("Olá, Anjos! 🍦 Vim pelo site.");
   desenharStatus("#status"); desenharHorarios("#horEmporio");
   setInterval(() => desenharStatus("#status"), 60000);
-  arteHero("#heroArte", [
-    ["paleta","#f28aa8","left:4%;top:40px;width:110px;transform:rotate(-14deg)"],
-    ["cob","#f8c21d","left:32%;top:0;width:118px;transform:rotate(4deg)"],
-    ["cone","#8a5a3f","right:6%;top:30px;width:130px;transform:rotate(12deg)"],
-    ["fruta","#9bd47a","left:18%;top:190px;width:80px;transform:rotate(-6deg)"],
-    ["pote","#8d5bb5","right:16%;top:220px;width:150px"]
-  ]);
 </script>
 </body>
 </html>

@@ -7,9 +7,21 @@
 <title>Seja revendedor — Anjos Sorvetes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="img/icone.png">
 <link rel="stylesheet" href="estilo.css">
 <style>
   .hero.marrom .tag{background:rgba(255,255,255,.15);color:var(--amarelo)}
+  .hfoto{position:relative;border-radius:28px;overflow:hidden;border:6px solid #fff;box-shadow:0 26px 44px -18px rgba(0,0,0,.5);transform:rotate(2deg)}
+  .hfoto img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+  .hfoto span{position:absolute;left:1rem;bottom:1rem;background:#fff;color:var(--marrom2);font-weight:900;padding:.45rem .8rem;border-radius:12px;font-size:.9rem}
+  @media (max-width:860px){.hfoto{order:-1}}
+  .linhas-r{display:grid;grid-template-columns:repeat(5,1fr);gap:.9rem;margin-top:1.6rem}
+  .linhas-r a{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1;display:block;text-decoration:none;box-shadow:0 8px 20px -14px rgba(31,95,114,.6)}
+  .linhas-r a>img,.linhas-r a>.sem-foto{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .linhas-r a:hover>img{transform:scale(1.06)}
+  .linhas-r a>b{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .7rem .6rem;background:linear-gradient(transparent,rgba(0,0,0,.65));color:#fff;font-family:"Baloo 2";font-size:1.1rem}
+  .linhas-r a>.sem-foto span{display:none}
+  @media (max-width:860px){.linhas-r{grid-template-columns:repeat(2,1fr)}}
   .vant{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:-3.2rem;position:relative;z-index:2}
   .vant div{background:#fff;border-radius:var(--raio);padding:1.4rem 1.2rem;box-shadow:var(--sombra)}
   .vant span{font-size:1.8rem}
@@ -65,7 +77,7 @@
         <a class="btn cont" href="pedidos.html">Ver os produtos</a>
       </div>
     </div>
-    <div class="hero-arte" id="heroArte"></div>
+    <div class="hfoto"><img src="img/fachada.webp" alt="Fábrica e Empório Anjos"><span>📍 Fábrica em Anchieta (ES)</span></div>
   </div>
   <svg class="onda" viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="currentColor" d="M0 30c120 20 240 30 360 22S600 10 720 12s240 30 360 34 240-10 360-24v38H0z"/></svg>
 </section>
@@ -110,7 +122,7 @@
     <span class="tag">Linha de produtos</span>
     <h2 class="tt">O que você pode revender</h2>
     <p class="sub">Toque numa linha para ver todos os sabores.</p>
-    <div class="chips" id="chips"></div>
+    <div class="linhas-r" id="chips"></div>
   </div>
 </section>
 
@@ -154,16 +166,9 @@
 <script>
   $("#vSab").textContent = TOTAL_SABORES + " sabores";
   const COR_LINHA = { potes:"#f28aa8", cobertura:"#f8c21d", recheados:"#9bd47a", leite:"#f7d54a", frutados:"#8d5bb5", zero:"#8a5a3f", paletas:"#f28aa8", cones:"#8a5a3f", sundae:"#ef6b7c", copinho:"#5bb6cc" };
-  $("#chips").innerHTML = CATS.map(c => `<a href="pedidos.html?cat=${c.id}">${arte(c.forma, COR_LINHA[c.id])}${c.nome}</a>`).join("");
+  $("#chips").innerHTML = CATS.map(c => `<a href="pedidos.html?cat=${c.id}">${fotoCat(c)}<b>${c.nome}</b></a>`).join("");
   $("#checks").innerHTML = CATS.map(c => `<label><input type="checkbox" value="${c.nome}">${c.nome}</label>`).join("");
   montarLayout("revenda");
-  arteHero("#heroArte", [
-    ["pote","#f28aa8","left:2%;top:180px;width:150px"],
-    ["cob","#8a5a3f","left:30%;top:10px;width:110px;transform:rotate(-8deg)"],
-    ["paleta","#9bd47a","right:8%;top:20px;width:110px;transform:rotate(10deg)"],
-    ["sundae","#f8c21d","right:18%;top:200px;width:130px"],
-    ["fruta","#8d5bb5","left:12%;top:20px;width:70px;transform:rotate(-16deg)"]
-  ]);
   $("#formRev").addEventListener("submit", e => {
     e.preventDefault();
     const linhas = [...document.querySelectorAll("#checks input:checked")].map(i => i.value);

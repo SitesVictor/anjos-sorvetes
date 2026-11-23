@@ -7,6 +7,7 @@
 <title>Pedidos — Anjos Sorvetes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="img/icone.png">
 <link rel="stylesheet" href="estilo.css">
 <style>
   .barra-cat{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:-2.2rem 0 1.2rem;position:relative;z-index:2}
@@ -17,16 +18,19 @@
   .aba b{font-size:.75rem;background:var(--ceu);border-radius:999px;padding:.05rem .45rem;color:var(--azul2)}
   .aba.on{background:var(--azul2);border-color:var(--azul2);color:#fff}
   .aba.on b{background:rgba(255,255,255,.25);color:#fff}
-  .cat-desc{display:flex;align-items:center;gap:1rem;background:#fff;border-radius:var(--raio);padding:1rem 1.2rem;box-shadow:var(--sombra);margin-bottom:1.2rem}
-  .cat-desc svg{width:56px;height:56px;flex:none}
+  .cat-desc{display:flex;align-items:center;gap:1.2rem;background:#fff;border-radius:var(--raio);padding:.8rem;box-shadow:var(--sombra);margin-bottom:1.2rem}
+  .cat-desc .cf{width:150px;height:110px;flex:none;border-radius:16px;object-fit:cover;display:grid}
+  .cat-desc .cf.sem-foto{font-size:1rem}
+  .cat-desc .cf.mosaicinho{display:grid;grid-template-columns:1fr 1fr;gap:3px;overflow:hidden}
+  .cat-desc .cf.mosaicinho img{width:100%;height:100%;object-fit:cover}
+  @media (max-width:520px){.cat-desc .cf{width:96px;height:96px}}
   .cat-desc h3{font-size:1.6rem;color:var(--azulEsc)}
   .cat-desc p{color:var(--suave);font-weight:700;font-size:.95rem}
   .grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.8rem}
   .sab{background:#fff;border-radius:20px;padding:1rem .9rem .9rem;text-align:center;box-shadow:0 8px 20px -14px rgba(31,95,114,.6);position:relative;transition:transform .15s,box-shadow .15s;border:2px solid transparent;display:flex;flex-direction:column}
   .sab:hover{transform:translateY(-3px)}
   .sab.sel{border-color:var(--amarelo);box-shadow:0 10px 24px -12px rgba(229,168,0,.7)}
-  .sab .ilu{height:96px;display:grid;place-items:center;margin-bottom:.4rem}
-  .sab .ilu svg{height:96px;width:auto}
+  .sab .bola{width:70px;height:70px;border-radius:50%;margin:.2rem auto .6rem;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.85) 0 9%,transparent 10%),radial-gradient(circle at 50% 50%,var(--c) 0 62%,var(--c2) 100%);box-shadow:inset 0 -6px 10px rgba(0,0,0,.12),0 8px 14px -8px var(--c2);border:3px solid #fff;outline:2px solid #eef6f8}
   .sab h4{font-weight:900;font-size:1rem;min-height:2.5em;display:grid;place-items:center;line-height:1.2}
   .sab .tipo{font-size:.72rem;font-weight:800;color:var(--suave);text-transform:uppercase;letter-spacing:.06em}
   .sab .novo{position:absolute;top:.6rem;left:.6rem;background:var(--amarelo);color:var(--marrom2);font-weight:900;font-size:.68rem;padding:.15rem .5rem;border-radius:999px}
@@ -130,12 +134,12 @@
   function desenharGrade() {
     const q = norm($("#busca").value.trim());
     const c = CATS.find(x => x.id === catAtual);
-    $("#catDesc").innerHTML = c ? `${arte(c.forma, c.cor)}<div><h3>${c.nome}</h3><p>${c.desc}${c.tam ? " Tamanhos: " + c.tam + "." : ""}</p></div>`
-      : `${arte("cone","#f28aa8")}<div><h3>Todos os produtos</h3><p>Picolés, paletas, potes, cones, sundaes e copinhos. Itens com selo <b>Novo</b> são lançamentos.</p></div>`;
+    $("#catDesc").innerHTML = c ? `${fotoCat(c, "cf")}<div><h3>${c.nome}</h3><p>${c.desc}${c.tam ? " Tamanhos: " + c.tam + "." : ""}</p></div>`
+      : `<div class="cf mosaicinho"><img src="img/cobertura.webp" alt=""><img src="img/frutados.webp" alt=""><img src="img/potes.webp" alt=""><img src="img/cones.webp" alt=""></div><div><h3>Todos os produtos</h3><p>Picolés, paletas, potes, cones, sundaes e copinhos. Itens com selo <b>Novo</b> são lançamentos.</p></div>`;
     const l = ITENS.filter(i => (catAtual === "todos" || i.cat.id === catAtual) && (!q || norm(i.sabor + " " + i.cat.nome).includes(q)));
     $("#grade").innerHTML = l.length ? l.map(i => { const n = qtd[i.id] || 0;
       return `<div class="sab ${n?"sel":""}">${i.novo?'<span class="novo">Novo</span>':""}
-        <div class="ilu">${arte(i.cat.forma, i.cat.id === "copinho" ? "#5bb6cc" : corDe(i.sabor))}</div>
+        <div class="bola" style="--c:${i.cat.id === "copinho" ? "#5bb6cc" : corDe(i.sabor)};--c2:${escurecer(i.cat.id === "copinho" ? "#5bb6cc" : corDe(i.sabor), .82)}"></div>
         <div class="tipo">${i.cat.nome}</div><h4>${i.sabor}</h4>
         ${n ? `<div class="qtd"><button class="m" data-id="${i.id}" data-d="-1" aria-label="Remover">−</button><span>${n}</span><button class="p" data-id="${i.id}" data-d="1" aria-label="Adicionar">+</button></div>`
             : `<button class="add" data-id="${i.id}" data-d="1">+ Adicionar</button>`}</div>`; }).join("")
