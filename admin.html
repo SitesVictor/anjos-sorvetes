@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Painel — Anjos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --azul:#5bb6cc; --azul2:#3b98b0; --azulEsc:#1f5f72; --ceu:#e8f6fa; --amarelo:#f8c21d; --amarelo2:#e5a800; --marrom:#8a5a3f; --marrom2:#6a4029; --creme:#fffaf0; --texto:#24343a; --verde:#1f9d55; --verm:#c0392b; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  body { font-family:Nunito,system-ui,sans-serif; background:var(--creme); color:var(--texto); min-height:100vh; padding-bottom:5.5rem; }
+  h1,h2 { font-family:"Baloo 2",Nunito,sans-serif; font-weight:800; line-height:1.05; }
+  [hidden] { display:none !important; }
+
+  .topo { background:linear-gradient(160deg,var(--azul),var(--azul2)); color:#fff; padding:1rem 1rem 3.2rem; }
+  .topo .in { max-width:560px; margin:0 auto; display:flex; align-items:center; gap:.8rem; }
+  .topo .marca { background:#fff; border-radius:14px; padding:.35rem .7rem; flex:none; }
+  .topo .marca img { height:34px; width:auto; display:block; }
+  .topo small { display:block; font-weight:800; letter-spacing:.15em; font-size:.65rem; text-transform:uppercase; opacity:.95; }
+  .topo .sair { margin-left:auto; background:rgba(0,0,0,.22); color:#fff; border:0; border-radius:999px; padding:.45rem .9rem; font:800 .8rem Nunito,sans-serif; cursor:pointer; }
+
+  main { max-width:560px; margin:-2.4rem auto 0; padding:0 1rem; }
+  .card { background:#fff; border-radius:18px; padding:1.1rem; margin-bottom:1rem; box-shadow:0 14px 34px -18px rgba(31,95,114,.55); }
+  .card h2 { font-size:1.4rem; color:var(--azulEsc); margin-bottom:.4rem; }
+  .sub { font-size:.86rem; color:#5f7a82; font-weight:600; }
+  .demo { background:var(--amarelo); color:var(--marrom2); font-weight:800; font-size:.8rem; text-align:center; padding:.45rem 1rem; }
+
+  #login { max-width:420px; margin:2rem auto; padding:1.4rem; }
+  #login h2 { font-size:1.9rem; }
+  input[type=text], input[type=email], input[type=password], input[type=search] { width:100%; padding:.8rem .9rem; margin:.35rem 0; border:2px solid #dbeef3; border-radius:12px; font:inherit; background:#fff; color:var(--texto); }
+  input:focus { outline:none; border-color:var(--azul2); }
+  .erro { color:var(--verm); font-weight:800; font-size:.9rem; min-height:1.2rem; margin-top:.4rem; }
+
+  .btn { border:0; border-radius:14px; padding:.95rem 1.2rem; font:900 1rem Nunito,sans-serif; cursor:pointer; background:var(--azul2); color:#fff; width:100%; margin-top:.5rem; transition:transform .1s; }
+  .btn:active { transform:scale(.98); }
+  .btn.am { background:var(--amarelo); color:var(--marrom2); }
+  .btn.claro { background:#e8f6fa; color:var(--azulEsc); }
+
+  .status { text-align:center; padding:1.4rem 1rem; border-radius:18px; color:#fff; margin-bottom:1rem; box-shadow:0 14px 34px -18px rgba(0,0,0,.5); }
+  .status.ab { background:linear-gradient(160deg,#2bb673,#16854f); }
+  .status.fe { background:linear-gradient(160deg,#d0503f,#9c2c1f); }
+  .status .grande { font-family:"Baloo 2",sans-serif; font-weight:800; font-size:2rem; line-height:1.1; }
+  .status p { opacity:.95; font-weight:700; margin-top:.25rem; }
+  .status .btn { background:#fff; color:var(--texto); width:auto; padding:.8rem 1.6rem; margin-top:1rem; }
+  .pulso { width:13px; height:13px; border-radius:50%; background:#fff; display:inline-block; margin-right:.5rem; animation:pulso 1.6s infinite; }
+  @keyframes pulso { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)} 70%{box-shadow:0 0 0 10px rgba(255,255,255,0)} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0)} }
+
+  .rotulo { font-weight:800; font-size:.85rem; margin:.9rem 0 .4rem; }
+  .chips { display:flex; flex-wrap:wrap; gap:.45rem; }
+  .chip { border:2px solid #dbeef3; background:#fff; border-radius:999px; padding:.5rem .95rem; font:800 .85rem Nunito,sans-serif; color:var(--texto); cursor:pointer; }
+  .chip.on { background:var(--azul2); border-color:var(--azul2); color:#fff; }
+
+  .cat { font-family:"Baloo 2",sans-serif; font-weight:800; font-size:1.15rem; color:var(--marrom); margin:1rem 0 .2rem; }
+  .linha { display:flex; align-items:center; gap:.6rem; padding:.6rem 0; border-bottom:1px dashed #d7e6ea; }
+  .linha .nm { flex:1; min-width:0; font-weight:700; font-size:.95rem; }
+  .linha.esg .nm { opacity:.5; text-decoration:line-through; }
+  .novo { background:var(--amarelo); color:var(--marrom2); font-size:.65rem; font-weight:900; border-radius:999px; padding:.1rem .5rem; margin-left:.35rem; vertical-align:middle; text-decoration:none; display:inline-block; }
+  .sw { position:relative; width:52px; height:30px; flex:none; }
+  .sw input { opacity:0; width:100%; height:100%; position:absolute; margin:0; cursor:pointer; z-index:1; }
+  .sw i { position:absolute; inset:0; background:var(--verm); border-radius:999px; transition:.2s; }
+  .sw i::after { content:""; position:absolute; width:24px; height:24px; background:#fff; border-radius:50%; top:3px; left:3px; transition:.2s; }
+  .sw input:checked + i { background:var(--verde); }
+  .sw input:checked + i::after { transform:translateX(22px); }
+
+  .log { padding:.6rem 0; border-bottom:1px dashed #d7e6ea; font-size:.9rem; font-weight:600; }
+  .log small { display:block; color:#5f7a82; font-weight:700; }
+  .vazio { text-align:center; color:#5f7a82; padding:1rem; font-weight:700; }
+  .kpis { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin:.4rem 0 .6rem; }
+  .kpi { background:var(--ceu); border-radius:14px; padding:.8rem; text-align:center; }
+  .kpi b { display:block; font-family:"Baloo 2",sans-serif; font-size:2.1rem; color:var(--azulEsc); line-height:1; font-weight:800; }
+  .kpi span { font-size:.78rem; font-weight:700; color:#5f7a82; }
+  .aviso { font-size:.78rem; color:#5f7a82; text-align:center; margin:.5rem 0 1rem; font-weight:600; }
+
+  nav { position:fixed; left:0; right:0; bottom:0; background:#fff; display:flex; box-shadow:0 -4px 14px rgba(0,0,0,.12); z-index:10; }
+  nav button { flex:1; background:none; border:0; padding:.7rem .3rem .6rem; font:800 .72rem Nunito,sans-serif; color:#7b9299; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:.15rem; }
+  nav button span { font-size:1.35rem; line-height:1; }
+  nav button.on { color:var(--azul2); }
+
+  .toast { position:fixed; left:50%; bottom:5.5rem; transform:translateX(-50%) translateY(20px); background:var(--azulEsc); color:#fff; padding:.7rem 1.2rem; border-radius:999px; font-weight:800; font-size:.88rem; opacity:0; pointer-events:none; transition:.25s; z-index:30; }
+  .toast.on { opacity:1; transform:translateX(-50%); }
+
+  @media (min-width:900px) {
+    body { padding-bottom:0; }
+    .topo { position:fixed; left:0; top:0; bottom:0; width:250px; padding:1.8rem 1.2rem; background:linear-gradient(180deg,var(--azul2),var(--azulEsc)); z-index:5; }
+    .topo .in { max-width:none; flex-direction:column; align-items:flex-start; gap:.7rem; }
+    .topo .marca img { height:44px; }
+    .topo .sair { position:fixed; left:1.2rem; bottom:1.4rem; width:210px; margin:0; padding:.75rem; background:rgba(255,255,255,.16); }
+    nav { position:fixed; left:0; top:170px; bottom:auto; right:auto; width:250px; flex-direction:column; background:transparent; box-shadow:none; padding:0 .9rem; gap:.35rem; z-index:6; }
+    nav button { flex-direction:row; justify-content:flex-start; gap:.8rem; padding:.9rem 1rem; font-size:1rem; border-radius:12px; color:rgba(255,255,255,.85); }
+    nav button:hover { background:rgba(255,255,255,.14); }
+    nav button.on { background:#fff; color:var(--azulEsc); }
+    main { max-width:760px; margin:0 0 0 250px; padding:2.2rem 2.8rem 3rem; }
+    .toast { bottom:2rem; left:calc(50% + 125px); }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo" id="demo" hidden>Modo demonstração: o Firebase ainda não foi configurado, as mudanças ficam só neste navegador.</div>
+
+<div id="login" class="card" hidden>
+  <h2>Painel da Anjos</h2>
+  <p class="sub">Entre com o e-mail e a senha do administrador.</p>
+  <input type="email" id="usuario" placeholder="E-mail" autocomplete="username" autocapitalize="none">
+  <input type="password" id="pin" placeholder="Senha" autocomplete="current-password">
+  <button class="btn" id="entrar">Entrar</button>
+  <p class="erro" id="erro"></p>
+</div>
+
+<div id="painel" hidden>
+  <div class="topo">
+    <div class="in">
+      <div class="marca"><img src="img/logo-h.webp" alt="Anjos"></div>
+      <div><small>Painel da loja</small></div>
+      <button class="sair" id="sair">Sair</button>
+    </div>
+  </div>
+
+  <main>
+    <section id="aba-loja">
+      <div class="status" id="status"></div>
+
+      <div class="card" id="fecharForm" hidden>
+        <h2>Fechar a loja</h2>
+        <div class="rotulo">Por quanto tempo?</div>
+        <div class="chips" id="tempo">
+          <button class="chip" data-t="30">30 min</button>
+          <button class="chip" data-t="60">1 hora</button>
+          <button class="chip" data-t="120">2 horas</button>
+          <button class="chip" data-t="hoje">Só hoje</button>
+          <button class="chip" data-t="sempre">Até eu reabrir</button>
+        </div>
+        <div class="rotulo">Motivo (o cliente vê)</div>
+        <div class="chips" id="motivos">
+          <button class="chip">Voltamos em breve</button>
+          <button class="chip">Imprevisto</button>
+          <button class="chip">Feriado</button>
+          <button class="chip">Inventário</button>
+        </div>
+        <input type="text" id="msg" maxlength="60" placeholder="Ou escreva o aviso aqui">
+        <button class="btn" id="confirmar">Confirmar fechamento</button>
+        <button class="btn claro" id="cancelar">Cancelar</button>
+      </div>
+
+      <div class="card">
+        <h2>Resumo</h2>
+        <div class="kpis">
+          <div class="kpi"><b id="kEsg">0</b><span id="kEsgT">sabores em falta</span></div>
+          <div class="kpi"><b id="kAcoes">0</b><span id="kAcoesT">ações registradas</span></div>
+        </div>
+        <div class="rotulo">Últimas ações</div>
+        <div id="ultimas"></div>
+      </div>
+      <p class="aviso">Os horários normais ficam definidos no site. Aqui entram só as exceções.</p>
+    </section>
+
+    <section id="aba-sabores" hidden>
+      <div class="card">
+        <h2>Disponibilidade dos sabores</h2>
+        <p class="sub">Desligue o que acabou. O cliente vê o sabor como "Em falta" na página de pedidos.</p>
+        <input type="search" id="busca" placeholder="Buscar sabor…">
+        <button class="btn claro" id="todos">Marcar todos como disponíveis</button>
+        <div id="lista"></div>
+      </div>
+    </section>
+
+    <section id="aba-hist" hidden>
+      <div class="card">
+        <h2>Últimas ações</h2>
+        <div id="hist"></div>
+      </div>
+    </section>
+    <p class="aviso">Tudo é salvo online e aparece em tempo real para os clientes.</p>
+  </main>
+
+  <nav>
+    <button class="on" data-aba="loja"><span>🏪</span>Loja</button>
+    <button data-aba="sabores"><span>🍦</span>Sabores</button>
+    <button data-aba="hist"><span>🕒</span>Histórico</button>
+  </nav>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="fb.js"></script>
+<script src="comum.js"></script>
+<script>
+  const $$ = s => [...document.querySelectorAll(s)];
+  const DEMO = !DB;
+  let LOJA = {};
+  const ler = () => JSON.parse(JSON.stringify(LOJA));
+  function gravar(c) {
+    LOJA = c;
+    if (DEMO) { try { localStorage.setItem("anjos_loja_demo", JSON.stringify(c)); } catch (e) {} return; }
+    DB.ref("loja").set(c).catch(() => alert("Não foi possível salvar. Verifique a internet e o login."));
+  }
+  const hora = ts => new Date(ts).toLocaleTimeString("pt-BR", { hour:"2-digit", minute:"2-digit" });
+  const dataHora = ts => new Date(ts).toLocaleString("pt-BR", { day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit" });
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+  const registrar = (c, txt) => { c.log = [{ t:Date.now(), txt }, ...(c.log || [])].slice(0, 40); };
+  const fechada = c => !!c.fechado && (!c.ate || Date.now() < c.ate);
+
+  function mostrar(logado) { $("#login").hidden = logado; $("#painel").hidden = !logado; if (logado) desenhar(); }
+
+  if (DEMO) {
+    $("#demo").hidden = false;
+    try { LOJA = JSON.parse(localStorage.getItem("anjos_loja_demo") || "{}"); } catch (e) { LOJA = {}; }
+    $("#sair").hidden = true;
+    mostrar(true);
+  } else {
+    const entrar = () => {
+      $("#erro").textContent = "";
+      firebase.auth().signInWithEmailAndPassword($("#usuario").value.trim(), $("#pin").value)
+        .catch(() => { $("#erro").textContent = "E-mail ou senha incorretos."; });
+    };
+    $("#entrar").onclick = entrar;
+    $("#pin").addEventListener("keydown", e => { if (e.key === "Enter") entrar(); });
+    $("#sair").onclick = () => { $("#pin").value = ""; firebase.auth().signOut(); };
+    mostrar(false);
+    let ligado = false;
+    firebase.auth().onAuthStateChanged(u => {
+      mostrar(!!u);
+      if (u && !ligado) { ligado = true; DB.ref("loja").on("value", s => { LOJA = s.val() || {}; desenhar(); }); }
+      if (!u) { ligado = false; DB.ref("loja").off(); }
+    });
+  }
+
+  $$("nav button").forEach(b => b.onclick = () => {
+    $$("nav button").forEach(x => x.classList.toggle("on", x === b));
+    ["loja","sabores","hist"].forEach(a => $("#aba-" + a).hidden = a !== b.dataset.aba);
+    desenhar();
+  });
+
+  let tempo = null;
+  function desenharStatus() {
+    const c = ler(), f = fechada(c), el = $("#status");
+    el.className = "status " + (f ? "fe" : "ab");
+    if (f) {
+      el.innerHTML = `<div class="grande"><span class="pulso"></span>Loja fechada</div>`
+        + `<p>${c.msg ? esc(c.msg) : "Sem atendimento no momento"}</p>`
+        + `<p>${c.ate ? "Reabre sozinha às " + hora(c.ate) : "Fica fechada até você reabrir"}</p>`
+        + `<button class="btn" id="reabrir">Reabrir agora</button>`;
+      $("#reabrir").onclick = () => { const n = ler(); n.fechado = false; delete n.ate; delete n.msg; registrar(n, "Reabriu a loja"); gravar(n); toast("Loja reaberta ✓"); desenhar(); };
+      $("#fecharForm").hidden = true;
+    } else {
+      el.innerHTML = `<div class="grande"><span class="pulso"></span>Loja aberta</div><p>Os clientes estão vendo o horário normal</p>`
+        + `<button class="btn" id="abrirForm">Fechar a loja…</button>`;
+      $("#abrirForm").onclick = () => { $("#fecharForm").hidden = false; $("#fecharForm").scrollIntoView({ behavior:"smooth", block:"center" }); };
+    }
+  }
+  $("#tempo").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    $$("#tempo .chip").forEach(x => x.classList.toggle("on", x === b)); tempo = b.dataset.t;
+  });
+  $("#motivos").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    $$("#motivos .chip").forEach(x => x.classList.toggle("on", x === b)); $("#msg").value = b.textContent;
+  });
+  $("#msg").addEventListener("input", () => $$("#motivos .chip").forEach(x => x.classList.remove("on")));
+  $("#cancelar").onclick = () => { $("#fecharForm").hidden = true; };
+  $("#confirmar").onclick = () => {
+    if (!tempo) { toast("Escolha por quanto tempo"); return; }
+    const c = ler(), msg = $("#msg").value.trim();
+    c.fechado = true; c.msg = msg; delete c.ate;
+    let rotulo = "até reabrir";
+    if (tempo === "hoje") { const f = new Date(); f.setHours(24,0,0,0); c.ate = f.getTime(); rotulo = "só hoje"; }
+    else if (tempo !== "sempre") { c.ate = Date.now() + Number(tempo) * 60000; rotulo = tempo === "60" ? "1 hora" : tempo === "120" ? "2 horas" : tempo + " min"; }
+    registrar(c, `Fechou a loja (${rotulo})` + (msg ? ` — ${msg}` : ""));
+    gravar(c); tempo = null; $("#msg").value = ""; $$(".chip").forEach(x => x.classList.remove("on"));
+    $("#fecharForm").hidden = true; toast("Loja fechada ✓"); desenhar();
+  };
+
+  function desenharLista() {
+    const c = ler(), esg = c.esgotados || [], t = norm($("#busca").value.trim());
+    let html = "";
+    CATS.filter(cat => cat.id !== "copinho").forEach(cat => {
+      const itens = ITENS.filter(i => i.cat === cat && (!t || norm(i.sabor).includes(t)));
+      if (!itens.length) return;
+      html += `<div class="cat">${esc(cat.nome)}</div>` + itens.map(i => {
+        const ok = !esg.includes(i.id);
+        return `<div class="linha ${ok ? "" : "esg"}"><div class="nm">${esc(i.sabor)}${i.novo ? `<span class="novo">Novo</span>` : ""}</div>
+          <label class="sw"><input type="checkbox" data-id="${esc(i.id)}" data-nome="${esc(i.sabor)}" ${ok ? "checked" : ""}><i></i></label></div>`;
+      }).join("");
+    });
+    $("#lista").innerHTML = html || `<div class="vazio">Nenhum sabor encontrado.</div>`;
+    $("#todos").hidden = !esg.length;
+    $("#todos").textContent = `Marcar todos como disponíveis (${esg.length} em falta)`;
+  }
+  $("#busca").addEventListener("input", desenharLista);
+  $("#lista").addEventListener("change", e => {
+    const i = e.target.closest("input[data-id]"); if (!i) return;
+    const c = ler(), esg = new Set(c.esgotados || []);
+    if (i.checked) esg.delete(i.dataset.id); else esg.add(i.dataset.id);
+    c.esgotados = [...esg];
+    registrar(c, `${i.dataset.nome} ${i.checked ? "voltou a ficar disponível" : "marcado como em falta"}`);
+    gravar(c); toast(i.checked ? "Disponível ✓" : "Marcado como em falta"); desenharLista();
+  });
+  $("#todos").onclick = () => { const c = ler(); c.esgotados = []; registrar(c, "Todos os sabores voltaram a ficar disponíveis"); gravar(c); toast("Tudo disponível ✓"); desenharLista(); };
+
+  const itemLog = x => `<div class="log">${esc(x.txt)}<small>${dataHora(x.t)}</small></div>`;
+  function desenharHist() {
+    const l = ler().log || [];
+    $("#hist").innerHTML = l.length ? l.map(itemLog).join("") : `<div class="vazio">Nenhuma ação registrada ainda.</div>`;
+  }
+  function desenharResumo() {
+    const c = ler(), l = c.log || [], ne = (c.esgotados || []).length;
+    $("#kEsg").textContent = ne; $("#kEsgT").textContent = ne === 1 ? "sabor em falta" : "sabores em falta";
+    $("#kAcoes").textContent = l.length; $("#kAcoesT").textContent = l.length === 1 ? "ação registrada" : "ações registradas";
+    $("#ultimas").innerHTML = l.length ? l.slice(0, 4).map(itemLog).join("") : `<div class="vazio">Nenhuma ação ainda.</div>`;
+  }
+  function desenhar() {
+    if ($("#painel").hidden) return;
+    if (!$("#aba-loja").hidden) { desenharResumo(); desenharStatus(); }
+    if (!$("#aba-sabores").hidden) desenharLista();
+    if (!$("#aba-hist").hidden) desenharHist();
+  }
+  setInterval(() => { if (!$("#aba-loja").hidden && !$("#painel").hidden) desenharStatus(); }, 30000);
+</script>
+</body>
+</html>
